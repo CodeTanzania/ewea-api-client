@@ -49,7 +49,6 @@ export const DEFAULT_SORT = { updatedAt: -1 };
 export const WELL_KNOWN = [
   'activity',
   'alert',
-  'alertSource',
   'assessment',
   'campaign',
   'feature',

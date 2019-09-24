@@ -33,26 +33,20 @@ describe('emis api client', () => {
     expect(WELL_KNOWN).to.be.an('array');
     expect(WELL_KNOWN).to.be.eql([
       'activity',
-      'adjustment',
       'alert',
-      'alertSource',
       'assessment',
       'campaign',
       'feature',
       'incident',
       'incidentType',
       'indicator',
-      'item',
       'message',
       'party',
       'permission',
       'predefine',
-      'plan',
-      'procedure',
       'question',
       'questionnaire',
       'role',
-      'stock',
     ]);
   });
 
@@ -68,7 +62,6 @@ describe('emis api client', () => {
     expect(SHORTCUTS).to.exist;
     expect(SHORTCUTS).to.be.an('object');
     expect(keys(SHORTCUTS)).to.contain('focalPerson', 'agency');
-    expect(keys(SHORTCUTS)).to.contain('itemUnit', 'itemCategory');
     forEach(keys(SHORTCUTS), shortcut => {
       expect(RESOURCES).to.have.property(shortcut);
     });

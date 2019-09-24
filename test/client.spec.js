@@ -29,38 +29,31 @@ import {
 const {
   getSchemas,
   getActivitySchema,
-  getAdjustmentSchema,
   getAlertSchema,
-  getAlertSourceSchema,
   getAssessmentSchema,
   getFeatureSchema,
   getIncidentSchema,
   getIncidentTypeSchema,
   getIndicatorSchema,
-  getItemSchema,
   getPartySchema,
   getPermissionSchema,
   getPredefineSchema,
-  getPlanSchema,
-  getProcedureSchema,
   getQuestionSchema,
   getQuestionnaireSchema,
   getRoleSchema,
-  getStockSchema,
-  getWarehouseSchema,
-  getPlans,
-  getPlansExportUrl,
-  getPlan,
-  postPlan,
-  putPlan,
-  patchPlan,
-  deletePlan,
+  getAlerts,
+  getAlertsExportUrl,
+  getAlert,
+  postAlert,
+  putAlert,
+  patchAlert,
+  deleteAlert,
 } = httpActions;
 
 describe('http client', () => {
   beforeEach(() => {
-    delete process.env.EMIS_API_URL;
-    delete process.env.REACT_APP_EMIS_API_URL;
+    delete process.env.EWEA_API_URL;
+    delete process.env.REACT_APP_EWEA_API_URL;
     nock.cleanAll();
     disposeHttpClient();
   });
@@ -228,9 +221,9 @@ describe('http client', () => {
     expect(createHttpClient.length).to.be.equal(1);
   });
 
-  it('should create http client use `env.EMIS_API_URL`', () => {
+  it('should create http client use `env.EWEA_API_URL`', () => {
     const baseUrl = 'https://api.emis.app';
-    process.env.EMIS_API_URL = baseUrl;
+    process.env.EWEA_API_URL = baseUrl;
     const client = createHttpClient(baseUrl);
     expect(client).to.exist;
     expect(client.defaults.headers.Accept).to.be.equal(CONTENT_TYPE);
@@ -238,9 +231,9 @@ describe('http client', () => {
     expect(client.defaults.baseURL).to.be.equal(baseUrl);
   });
 
-  it('should create http client use `env.REACT_APP_EMIS_API_URL`', () => {
+  it('should create http client use `env.REACT_APP_EWEA_API_URL`', () => {
     const baseUrl = 'https://api.emis.dev';
-    process.env.REACT_APP_EMIS_API_URL = baseUrl;
+    process.env.REACT_APP_EWEA_API_URL = baseUrl;
     const client = createHttpClient(baseUrl);
     expect(client).to.exist;
     expect(client.defaults.headers.Accept).to.be.equal(CONTENT_TYPE);
@@ -303,7 +296,7 @@ describe('http client', () => {
 
   it('should handle http get on /resource', done => {
     const baseUrl = 'https://api.emis.io/v1';
-    process.env.EMIS_API_URL = baseUrl;
+    process.env.EWEA_API_URL = baseUrl;
     const data = { data: [] };
     nock(baseUrl)
       .get('/users')
@@ -324,7 +317,7 @@ describe('http client', () => {
 
   it('should handle http get on /resource/:id', done => {
     const baseUrl = 'https://api.emis.io/v1';
-    process.env.EMIS_API_URL = baseUrl;
+    process.env.EWEA_API_URL = baseUrl;
     const data = {};
     nock(baseUrl)
       .get('/users/5c1766243c9d520004e2b542')
@@ -345,7 +338,7 @@ describe('http client', () => {
 
   it('should handle http post on /resource', done => {
     const baseUrl = 'https://api.emis.io/v1';
-    process.env.EMIS_API_URL = baseUrl;
+    process.env.EWEA_API_URL = baseUrl;
     const data = {};
     nock(baseUrl)
       .post('/users')
@@ -366,7 +359,7 @@ describe('http client', () => {
 
   it('should reject http post on /resource if no payload', done => {
     const baseUrl = 'https://api.emis.io/v1';
-    process.env.EMIS_API_URL = baseUrl;
+    process.env.EWEA_API_URL = baseUrl;
     const data = {};
     nock(baseUrl)
       .post('/users')
@@ -382,7 +375,7 @@ describe('http client', () => {
 
   it('should handle http put on /resource/:id', done => {
     const baseUrl = 'https://api.emis.io/v1';
-    process.env.EMIS_API_URL = baseUrl;
+    process.env.EWEA_API_URL = baseUrl;
     const data = {};
     nock(baseUrl)
       .put('/users/5c1766243c9d520004e2b542')
@@ -403,7 +396,7 @@ describe('http client', () => {
 
   it('should reject http put on /resource/:id if no payload', done => {
     const baseUrl = 'https://api.emis.io/v1';
-    process.env.EMIS_API_URL = baseUrl;
+    process.env.EWEA_API_URL = baseUrl;
     const data = {};
     nock(baseUrl)
       .put('/users/5c1766243c9d520004e2b542')
@@ -419,7 +412,7 @@ describe('http client', () => {
 
   it('should handle http patch on /resource/:id', done => {
     const baseUrl = 'https://api.emis.io/v1';
-    process.env.EMIS_API_URL = baseUrl;
+    process.env.EWEA_API_URL = baseUrl;
     const data = {};
     nock(baseUrl)
       .patch('/users/5c1766243c9d520004e2b542')
@@ -440,7 +433,7 @@ describe('http client', () => {
 
   it('should handle http post on /signin', done => {
     const baseUrl = 'https://api.emis.io/v1';
-    process.env.EMIS_API_URL = baseUrl;
+    process.env.EWEA_API_URL = baseUrl;
     const data = {
       success: true,
       party: {
@@ -470,7 +463,7 @@ describe('http client', () => {
 
   it('should reject http patch on /resource/:id if no payload', done => {
     const baseUrl = 'https://api.emis.io/v1';
-    process.env.EMIS_API_URL = baseUrl;
+    process.env.EWEA_API_URL = baseUrl;
     const data = {};
     nock(baseUrl)
       .patch('/users/5c1766243c9d520004e2b542')
@@ -486,7 +479,7 @@ describe('http client', () => {
 
   it('should handle http delete on /resource/:id', done => {
     const baseUrl = 'https://api.emis.io/v1';
-    process.env.EMIS_API_URL = baseUrl;
+    process.env.EWEA_API_URL = baseUrl;
     const data = {};
     nock(baseUrl)
       .delete('/users/5c1766243c9d520004e2b542')
@@ -507,7 +500,7 @@ describe('http client', () => {
 
   it('should handle failed request error', done => {
     const baseUrl = 'https://api.emis.io/v1';
-    process.env.EMIS_API_URL = baseUrl;
+    process.env.EWEA_API_URL = baseUrl;
 
     get('/users').catch(error => {
       expect(error).to.exist;
@@ -518,7 +511,7 @@ describe('http client', () => {
 
   it('should handle http response error', done => {
     const baseUrl = 'https://api.emis.io/v1';
-    process.env.EMIS_API_URL = baseUrl;
+    process.env.EWEA_API_URL = baseUrl;
     const data = {
       status: 400,
       code: 400,
@@ -590,44 +583,38 @@ describe('http client', () => {
     expect(deleteUser.length).to.be.be.equal(1);
   });
 
-  it('should export EMIS resource http action shortcuts', () => {
+  it('should export EWEA resource http action shortcuts', () => {
     expect(createHttpActionsFor).to.exist;
     expect(getSchemas).to.exist;
     expect(getActivitySchema).to.exist;
-    expect(getAdjustmentSchema).to.exist;
     expect(getAlertSchema).to.exist;
-    expect(getAlertSourceSchema).to.exist;
     expect(getAssessmentSchema).to.exist;
     expect(getFeatureSchema).to.exist;
     expect(getIncidentSchema).to.exist;
     expect(getIncidentTypeSchema).to.exist;
     expect(getIndicatorSchema).to.exist;
-    expect(getItemSchema).to.exist;
     expect(getPartySchema).to.exist;
     expect(getPermissionSchema).to.exist;
     expect(getPredefineSchema).to.exist;
-    expect(getPlanSchema).to.exist;
-    expect(getProcedureSchema).to.exist;
+    expect(getAlertSchema).to.exist;
     expect(getQuestionSchema).to.exist;
     expect(getQuestionnaireSchema).to.exist;
     expect(getRoleSchema).to.exist;
-    expect(getStockSchema).to.exist;
-    expect(getWarehouseSchema).to.exist;
   });
 
   it('should handle http get on /resource use generated actions', done => {
     const baseUrl = 'https://api.emis.io/v1';
-    process.env.EMIS_API_URL = baseUrl;
+    process.env.EWEA_API_URL = baseUrl;
     const data = { data: [] };
     nock(baseUrl)
-      .get('/plans')
+      .get('/alerts')
       .query(true)
       .reply(200, data);
 
-    getPlans()
-      .then(plans => {
-        expect(plans).to.exist;
-        expect(plans).to.be.eql(data);
+    getAlerts()
+      .then(alerts => {
+        expect(alerts).to.exist;
+        expect(alerts).to.be.eql(data);
         done(null, data);
       })
       .catch(error => {
@@ -637,24 +624,24 @@ describe('http client', () => {
 
   it('should generate resource export url', () => {
     const baseUrl = 'https://api.emis.io/v1';
-    process.env.EMIS_API_URL = baseUrl;
-    const url = getPlansExportUrl();
-    expect(url).to.be.contain(`${baseUrl}/plans/export`);
+    process.env.EWEA_API_URL = baseUrl;
+    const url = getAlertsExportUrl();
+    expect(url).to.be.contain(`${baseUrl}/alerts/export`);
   });
 
   it('should handle http get on /resource/:id use generated actions', done => {
     const baseUrl = 'https://api.emis.io/v1';
-    process.env.EMIS_API_URL = baseUrl;
+    process.env.EWEA_API_URL = baseUrl;
     const data = {};
     nock(baseUrl)
-      .get('/plans/5c1766243c9d520004e2b542')
+      .get('/alerts/5c1766243c9d520004e2b542')
       .query(true)
       .reply(200, data);
 
-    getPlan('5c1766243c9d520004e2b542')
-      .then(plan => {
-        expect(plan).to.exist;
-        expect(plan).to.be.eql(data);
+    getAlert('5c1766243c9d520004e2b542')
+      .then(alert => {
+        expect(alert).to.exist;
+        expect(alert).to.be.eql(data);
         done(null, data);
       })
       .catch(error => {
@@ -664,17 +651,17 @@ describe('http client', () => {
 
   it('should handle http post on /resource use generated actions', done => {
     const baseUrl = 'https://api.emis.io/v1';
-    process.env.EMIS_API_URL = baseUrl;
+    process.env.EWEA_API_URL = baseUrl;
     const data = {};
     nock(baseUrl)
-      .post('/plans')
+      .post('/alerts')
       .query(true)
       .reply(201, data);
 
-    postPlan({ description: 'Voluptas' })
-      .then(plan => {
-        expect(plan).to.exist;
-        expect(plan).to.be.eql(data);
+    postAlert({ description: 'Voluptas' })
+      .then(alert => {
+        expect(alert).to.exist;
+        expect(alert).to.be.eql(data);
         done(null, data);
       })
       .catch(error => {
@@ -684,17 +671,17 @@ describe('http client', () => {
 
   it('should handle http put on /resource/:id use generated actions', done => {
     const baseUrl = 'https://api.emis.io/v1';
-    process.env.EMIS_API_URL = baseUrl;
+    process.env.EWEA_API_URL = baseUrl;
     const data = {};
     nock(baseUrl)
-      .put('/plans/5c1766243c9d520004e2b542')
+      .put('/alerts/5c1766243c9d520004e2b542')
       .query(true)
       .reply(200, data);
 
-    putPlan({ _id: '5c1766243c9d520004e2b542', description: 'Voluptas' })
-      .then(plan => {
-        expect(plan).to.exist;
-        expect(plan).to.be.eql(data);
+    putAlert({ _id: '5c1766243c9d520004e2b542', description: 'Voluptas' })
+      .then(alert => {
+        expect(alert).to.exist;
+        expect(alert).to.be.eql(data);
         done(null, data);
       })
       .catch(error => {
@@ -704,17 +691,17 @@ describe('http client', () => {
 
   it('should handle http patch on /resource/:id use generated actions', done => {
     const baseUrl = 'https://api.emis.io/v1';
-    process.env.EMIS_API_URL = baseUrl;
+    process.env.EWEA_API_URL = baseUrl;
     const data = {};
     nock(baseUrl)
-      .patch('/plans/5c1766243c9d520004e2b542')
+      .patch('/alerts/5c1766243c9d520004e2b542')
       .query(true)
       .reply(200, data);
 
-    patchPlan({ _id: '5c1766243c9d520004e2b542', description: 'Voluptas' })
-      .then(plan => {
-        expect(plan).to.exist;
-        expect(plan).to.be.eql(data);
+    patchAlert({ _id: '5c1766243c9d520004e2b542', description: 'Voluptas' })
+      .then(alert => {
+        expect(alert).to.exist;
+        expect(alert).to.be.eql(data);
         done(null, data);
       })
       .catch(error => {
@@ -724,17 +711,17 @@ describe('http client', () => {
 
   it('should handle http delete on /resource/:id use generated actions', done => {
     const baseUrl = 'https://api.emis.io/v1';
-    process.env.EMIS_API_URL = baseUrl;
+    process.env.EWEA_API_URL = baseUrl;
     const data = {};
     nock(baseUrl)
-      .delete('/plans/5c1766243c9d520004e2b542')
+      .delete('/alerts/5c1766243c9d520004e2b542')
       .query(true)
       .reply(200, data);
 
-    deletePlan('5c1766243c9d520004e2b542')
-      .then(plan => {
-        expect(plan).to.exist;
-        expect(plan).to.be.eql(data);
+    deleteAlert('5c1766243c9d520004e2b542')
+      .then(alert => {
+        expect(alert).to.exist;
+        expect(alert).to.be.eql(data);
         done(null, data);
       })
       .catch(error => {
@@ -744,24 +731,24 @@ describe('http client', () => {
 
   it('should be able to issue request in parallel', done => {
     const baseUrl = 'https://api.emis.io/v1';
-    process.env.EMIS_API_URL = baseUrl;
+    process.env.EWEA_API_URL = baseUrl;
     const data = [{}];
     nock(baseUrl)
       .get('/incidenttypes/schema')
       .query(true)
       .reply(200, data);
     nock(baseUrl)
-      .get('/plans/schema')
+      .get('/alerts/schema')
       .query(true)
       .reply(200, data);
 
-    all(getIncidentTypeSchema(), getPlanSchema())
+    all(getIncidentTypeSchema(), getAlertSchema())
       .then(
-        spread((incidentTypeSchema, planSchema) => {
+        spread((incidentTypeSchema, alertSchema) => {
           expect(incidentTypeSchema).to.exist;
-          expect(planSchema).to.exist;
+          expect(alertSchema).to.exist;
           expect(incidentTypeSchema).to.be.eql(data);
-          expect(planSchema).to.be.eql(data);
+          expect(alertSchema).to.be.eql(data);
           done();
         })
       )
@@ -772,8 +759,8 @@ describe('http client', () => {
 
   it('should handle http get on /schemas', done => {
     const baseUrl = 'https://api.emis.io/v1';
-    process.env.EMIS_API_URL = baseUrl;
-    const data = { Plan: {}, Feature: {} };
+    process.env.EWEA_API_URL = baseUrl;
+    const data = { Alert: {}, Feature: {} };
     nock(baseUrl)
       .get('/schemas')
       .query(true)
@@ -783,7 +770,7 @@ describe('http client', () => {
       .then(schemas => {
         expect(schemas).to.exist;
         expect(schemas).to.be.an('object');
-        expect(schemas.Plan).to.exist;
+        expect(schemas.Alert).to.exist;
         expect(schemas.Feature).to.exist;
         expect(schemas.Warehouse).to.exist;
         done(null, data);
@@ -794,8 +781,8 @@ describe('http client', () => {
   });
 
   after(() => {
-    delete process.env.EMIS_API_URL;
-    delete process.env.REACT_APP_EMIS_API_URL;
+    delete process.env.EWEA_API_URL;
+    delete process.env.REACT_APP_EWEA_API_URL;
     nock.cleanAll();
     disposeHttpClient();
   });
