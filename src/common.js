@@ -48,7 +48,6 @@ export const DEFAULT_SORT = { updatedAt: -1 };
  */
 export const WELL_KNOWN = [
   'activity',
-  'adjustment',
   'alert',
   'alertSource',
   'assessment',
@@ -57,17 +56,13 @@ export const WELL_KNOWN = [
   'incident',
   'incidentType',
   'indicator',
-  'item',
   'message',
   'party',
   'permission',
   'predefine',
-  'plan',
-  'procedure',
   'question',
   'questionnaire',
   'role',
-  'stock',
 ];
 
 // default request params
@@ -153,18 +148,6 @@ const FEATURE_SHORTCUTS = {
 
 // predefine shortcuts
 const PREDEFINE_SHORTCUTS = {
-  itemUnit: {
-    shortcut: 'itemUnit',
-    wellknown: 'predefine',
-    bucket: 'itemunits',
-    params: mergeObjects(DEFAULT_PARAMS),
-  },
-  itemCategory: {
-    shortcut: 'itemCategory',
-    wellknown: 'predefine',
-    bucket: 'itemcategories',
-    params: mergeObjects(DEFAULT_PARAMS),
-  },
   partyGroup: {
     shortcut: 'partyGroup',
     wellknown: 'predefine',
