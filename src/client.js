@@ -70,7 +70,7 @@ export const getAuthenticatedParty = () => {
  * @since 0.14.0
  * @version 0.2.0
  * @example
- * import { isTokenValid } from 'emis-api-client';
+ * import { isTokenValid } from 'ewea-api-client';
  *
  * const isAuthenticated = isTokenValid();
  */
@@ -299,7 +299,7 @@ export const HEADERS = {
  * @static
  * @public
  * @example
- * import { prepareParams } from 'emis-api-client';
+ * import { prepareParams } from 'ewea-api-client';
  *
  * // array
  * const filters = prepareFilter({ filter: {name: ['Joe', 'Doe']} });
@@ -356,7 +356,7 @@ export const prepareParams = params => {
  * @static
  * @public
  * @example
- * import { createHttpClient } from 'emis-api-client';
+ * import { createHttpClient } from 'ewea-api-client';
  * const httpClient = createHttpClient();
  */
 export const createHttpClient = API_BASE_URL => {
@@ -378,7 +378,7 @@ export const createHttpClient = API_BASE_URL => {
  * @since 0.1.0
  * @version 0.1.0
  * @example
- * import { disposeHttpClient } from 'emis-api-client';
+ * import { disposeHttpClient } from 'ewea-api-client';
  * disposeHttpClient();
  */
 export const disposeHttpClient = () => {
@@ -393,7 +393,7 @@ export const disposeHttpClient = () => {
  * @since 0.2.0
  * @version 0.1.0
  * @example
- * import { all, spread } from 'emis-api-client';
+ * import { all, spread } from 'ewea-api-client';
  * const request = all(getIncidentTypes(), getPlans());
  * request.then(spread((incidentTypes, plans) => { ... }));
  */
@@ -407,7 +407,7 @@ export const all = (...promises) => axios.all([...promises]);
  * @since 0.2.0
  * @version 0.1.0
  * @example
- * import { all, spread } from 'emis-api-client';
+ * import { all, spread } from 'ewea-api-client';
  * const request = all(getIncidentTypes(), getPlans());
  * request.then(spread((incidentTypes, plans) => { ... }));
  */
@@ -423,7 +423,7 @@ export const spread = axios.spread; // eslint-disable-line
  * @since 0.1.0
  * @version 0.1.0
  * @example
- * import { get } from 'emis-api-client';
+ * import { get } from 'ewea-api-client';
  *
  * // list
  * const getUsers = get('/users', { age: { $in: [1, 2] } });
@@ -449,7 +449,7 @@ export const get = (url, params) => {
  * @since 0.1.0
  * @version 0.1.0
  * @example
- * import { post } from 'emis-api-client';
+ * import { post } from 'ewea-api-client';
  *
  * const postUser = post('/users', { age: 14 });
  * postUser.then(user => { ... }).catch(error => { ... });
@@ -472,7 +472,7 @@ export const post = (url, data) => {
  * @since 0.1.0
  * @version 0.1.0
  * @example
- * import { put } from 'emis-api-client';
+ * import { put } from 'ewea-api-client';
  *
  * const putUser = put('/users/5c1766243c9d520004e2b542', { age: 11 });
  * putUser.then(user => { ... }).catch(error => { ... });
@@ -495,7 +495,7 @@ export const put = (url, data) => {
  * @since 0.1.0
  * @version 0.1.0
  * @example
- * import { patch } from 'emis-api-client';
+ * import { patch } from 'ewea-api-client';
  *
  * const patchUser = patch('/users/5c1766243c9d520004e2b542', { age: 10 });
  * patchUser.then(user => { ... }).catch(error => { ... });
@@ -517,7 +517,7 @@ export const patch = (url, data) => {
  * @since 0.1.0
  * @version 0.1.0
  * @example
- * import { del } from 'emis-api-client';
+ * import { del } from 'ewea-api-client';
  *
  * const deleteUser = del('/users/5c1766243c9d520004e2b542');
  * deleteUser.then(user => { ... }).catch(error => { ... });
@@ -538,7 +538,7 @@ export const del = url => {
  * @static
  * @public
  * @example
- * import { signin } from 'emis-api-client';
+ * import { signin } from 'ewea-api-client';
  *
  * signin({ email:'', password:'' }).then(results => {});
  */
@@ -570,7 +570,7 @@ export const signin = credentials => {
  * @static
  * @public
  * @example
- * import { signout } from 'emis-api-client';
+ * import { signout } from 'ewea-api-client';
  *
  * signout();
  */
@@ -624,7 +624,7 @@ export const normalizeResource = resource => {
  * @since 0.7.0
  * @version 0.1.0
  * @example
- * import { createGetSchemaHttpAction } from 'emis-api-client';
+ * import { createGetSchemaHttpAction } from 'ewea-api-client';
  *
  * const resource = { wellknown: 'user' };
  * const getUserSchema = createGetSchemaHttpAction(resource);
@@ -667,7 +667,7 @@ export const createGetSchemaHttpAction = resource => {
  * @since 0.9.0
  * @version 0.1.0
  * @example
- * import { createExportUrlHttpAction } from 'emis-api-client';
+ * import { createExportUrlHttpAction } from 'ewea-api-client';
  *
  * const resource = { wellknown: 'user' };
  * const getUsersExportUrl = createExportUrlHttpAction(resource);
@@ -709,7 +709,7 @@ export const createExportUrlHttpAction = resource => {
  * @since 0.7.0
  * @version 0.1.0
  * @example
- * import { createGetListHttpAction } from 'emis-api-client';
+ * import { createGetListHttpAction } from 'ewea-api-client';
  *
  * const resource = { wellknown: 'user' };
  * const getUsers = createGetListHttpAction(resource);
@@ -750,7 +750,7 @@ export const createGetListHttpAction = resource => {
  * @since 0.7.0
  * @version 0.1.0
  * @example
- * import { createGetSingleHttpAction } from 'emis-api-client';
+ * import { createGetSingleHttpAction } from 'ewea-api-client';
  *
  * const resource = { wellknown: 'user' };
  * const getUser = createGetSingleHttpAction(resource);
@@ -795,7 +795,7 @@ export const createGetSingleHttpAction = resource => {
  * @since 0.7.0
  * @version 0.1.0
  * @example
- * import { createPostHttpAction } from 'emis-api-client';
+ * import { createPostHttpAction } from 'ewea-api-client';
  *
  * const resource = { wellknown: 'user' };
  * const postUser = createPostHttpAction(resource);
@@ -841,7 +841,7 @@ export const createPostHttpAction = resource => {
  * @since 0.7.0
  * @version 0.1.0
  * @example
- * import { createPutHttpAction } from 'emis-api-client';
+ * import { createPutHttpAction } from 'ewea-api-client';
  *
  * const resource = { wellknown: 'user' };
  * const putUser = createPutHttpAction(resource);
@@ -887,7 +887,7 @@ export const createPutHttpAction = resource => {
  * @since 0.7.0
  * @version 0.1.0
  * @example
- * import { createPatchHttpAction } from 'emis-api-client';
+ * import { createPatchHttpAction } from 'ewea-api-client';
  *
  * const resource = { wellknown: 'user' };
  * const patchUser = createPatchHttpAction(resource);
@@ -933,7 +933,7 @@ export const createPatchHttpAction = resource => {
  * @since 0.7.0
  * @version 0.1.0
  * @example
- * import { createDeleteHttpAction } from 'emis-api-client';
+ * import { createDeleteHttpAction } from 'ewea-api-client';
  *
  * const resource = { wellknown: 'user' };
  * const deleteUser = createDeleteHttpAction(resource);
@@ -976,7 +976,7 @@ export const createDeleteHttpAction = resource => {
  * @since 0.1.0
  * @version 0.1.0
  * @example
- * import { createHttpActionsFor } from 'emis-api-client';
+ * import { createHttpActionsFor } from 'ewea-api-client';
  *
  * const { deleteUser } = createHttpActionsFor('user');
  * deleteUser('5c176624').then(user => { ... }).catch(error => { ... });
