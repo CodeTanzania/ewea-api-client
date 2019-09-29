@@ -50,7 +50,7 @@
     "chai": "4.2.0",
     "commitizen": "4.0.3",
     "cz-conventional-changelog": "3.0.2",
-    "eslint": "6.4.0",
+    "eslint": "6.5.0",
     "eslint-config-airbnb-base": "14.0.0",
     "eslint-config-prettier": "6.3.0",
     "eslint-plugin-import": "2.18.2",
@@ -59,11 +59,11 @@
     "generate-changelog": "1.8.0",
     "husky": "3.0.7",
     "lint-staged": "9.4.0",
-    "mocha": "6.2.0",
+    "mocha": "6.2.1",
     "nock": "11.3.5",
     "prettier": "1.18.2",
     "rimraf": "3.0.0",
-    "rollup": "1.21.4"
+    "rollup": "1.22.0"
   },
   "dependencies": {
     "@lykmapipo/common": ">=0.25.0",
