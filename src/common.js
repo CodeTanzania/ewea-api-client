@@ -153,6 +153,48 @@ const PREDEFINE_SHORTCUTS = {
     bucket: 'partygroups',
     params: mergeObjects(DEFAULT_PARAMS),
   },
+  eventCertainty: {
+    shortcut: 'eventCertainty',
+    wellknown: 'predefine',
+    bucket: 'eventcertainties',
+    params: mergeObjects(DEFAULT_PARAMS),
+  },
+  eventFunction: {
+    shortcut: 'eventFunction',
+    wellknown: 'predefine',
+    bucket: 'eventfunctions',
+    params: mergeObjects(DEFAULT_PARAMS),
+  },
+  eventGroup: {
+    shortcut: 'eventGroup',
+    wellknown: 'predefine',
+    bucket: 'eventgroups',
+    params: mergeObjects(DEFAULT_PARAMS),
+  },
+  eventSeverity: {
+    shortcut: 'eventSeverity',
+    wellknown: 'predefine',
+    bucket: 'eventseverities',
+    params: mergeObjects(DEFAULT_PARAMS),
+  },
+  eventStatus: {
+    shortcut: 'eventStatus',
+    wellknown: 'predefine',
+    bucket: 'eventstatuses',
+    params: mergeObjects(DEFAULT_PARAMS),
+  },
+  eventType: {
+    shortcut: 'eventType',
+    wellknown: 'predefine',
+    bucket: 'eventtypes',
+    params: mergeObjects(DEFAULT_PARAMS),
+  },
+  eventUrgency: {
+    shortcut: 'eventUrgency',
+    wellknown: 'predefine',
+    bucket: 'eventurgencies',
+    params: mergeObjects(DEFAULT_PARAMS),
+  },
 };
 
 /**

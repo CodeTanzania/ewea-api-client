@@ -431,36 +431,6 @@ describe('http client', () => {
       });
   });
 
-  it('should handle http post on /signin', done => {
-    const baseUrl = 'https://api.emis.io/v1';
-    process.env.EWEA_API_URL = baseUrl;
-    const data = {
-      success: true,
-      party: {
-        _id: '5cf8e6f37e659b3a1ea6fd4c',
-        updatedAt: '2019-06-06T10:18:24.976Z',
-        createdAt: '2019-06-06T10:12:03.542Z',
-        lockedAt: null,
-      },
-      token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9',
-    };
-    nock(baseUrl)
-      .post('/signin')
-      .query(true)
-      .reply(200, data);
-
-    signin({ email: '', password: '' })
-      .then(response => {
-        expect(response).to.exist;
-        expect(response).to.exist;
-        expect(response).to.be.eql(data);
-        done(null, data);
-      })
-      .catch(error => {
-        done(error);
-      });
-  });
-
   it('should reject http patch on /resource/:id if no payload', done => {
     const baseUrl = 'https://api.emis.io/v1';
     process.env.EWEA_API_URL = baseUrl;
@@ -773,6 +743,36 @@ describe('http client', () => {
         expect(schemas.Alert).to.exist;
         expect(schemas.Feature).to.exist;
         expect(schemas.Warehouse).to.exist;
+        done(null, data);
+      })
+      .catch(error => {
+        done(error);
+      });
+  });
+
+  it('should handle http post on /signin', done => {
+    const baseUrl = 'https://api.emis.io/v1';
+    process.env.EWEA_API_URL = baseUrl;
+    const data = {
+      success: true,
+      party: {
+        _id: '5cf8e6f37e659b3a1ea6fd4c',
+        updatedAt: '2019-06-06T10:18:24.976Z',
+        createdAt: '2019-06-06T10:12:03.542Z',
+        lockedAt: null,
+      },
+      token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9',
+    };
+    nock(baseUrl)
+      .post('/signin')
+      .query(true)
+      .reply(200, data);
+
+    signin({ email: '', password: '' })
+      .then(response => {
+        expect(response).to.exist;
+        expect(response).to.exist;
+        expect(response).to.be.eql(data);
         done(null, data);
       })
       .catch(error => {
