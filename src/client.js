@@ -84,10 +84,6 @@ export const isTokenValid = () => {
   try {
     const decodedToken = jwtDecode(jwtToken);
 
-    if (!decodedToken.exp) {
-      return true;
-    }
-
     if (decodedToken.exp && decodedToken.exp > Date.now()) {
       return true;
     }
