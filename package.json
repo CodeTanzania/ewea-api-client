@@ -12,7 +12,7 @@
     "pretest": "npm run lint",
     "test": "NODE_ENV=test mocha --require @babel/register test/**/*.spec.js",
     "cmt": "git add -A && git-cz",
-    "changelog": "changelog"
+    "changelog": "changelog -x chore"
   },
   "repository": {
     "type": "git",
