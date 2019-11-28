@@ -84,7 +84,7 @@ export const isTokenValid = () => {
   try {
     const decodedToken = jwtDecode(jwtToken);
 
-    if (decodedToken.exp && decodedToken.exp > Date.now()) {
+    if (decodedToken.exp && decodedToken.exp > Math.round(Date.now() / 1000)) {
       return true;
     }
 
