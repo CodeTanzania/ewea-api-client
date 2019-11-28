@@ -5,7 +5,21 @@ import jwtDecode from 'jwt-decode';
 import { singularize, pluralize } from 'inflection';
 import { mergeObjects, variableNameFor, idOf, uniq } from '@lykmapipo/common';
 import { getString } from '@lykmapipo/env';
-import { isEmpty, forEach, merge, isString, isArray, isPlainObject, toLower, omit, first, min, max, clone, upperFirst } from 'lodash';
+import {
+  isEmpty,
+  forEach,
+  merge,
+  isString,
+  isArray,
+  isPlainObject,
+  toLower,
+  omit,
+  first,
+  min,
+  max,
+  clone,
+  upperFirst,
+} from 'lodash';
 
 // default http client
 let client;
@@ -71,10 +85,6 @@ const isTokenValid = () => {
 
   try {
     const decodedToken = jwtDecode(jwtToken);
-
-    if (!decodedToken.exp) {
-      return true;
-    }
 
     if (decodedToken.exp && decodedToken.exp > Date.now()) {
       return true;
@@ -1259,4 +1269,38 @@ forEach(RESOURCES, resource => {
   merge(httpActions, resourceHttpActions);
 });
 
-export { CONTENT_TYPE, DEFAULT_FILTER, DEFAULT_PAGINATION, DEFAULT_SORT, HEADERS, RESOURCES, SHORTCUTS, WELL_KNOWN, all, createDeleteHttpAction, createExportUrlHttpAction, createGetListHttpAction, createGetSchemaHttpAction, createGetSingleHttpAction, createHttpActionsFor, createHttpClient, createPatchHttpAction, createPostHttpAction, createPutHttpAction, del, disposeHttpClient, get, getAuthenticatedParty, httpActions, isTokenValid, normalizeResource, patch, post, prepareParams, put, signin, signout, spread };
+export {
+  CONTENT_TYPE,
+  DEFAULT_FILTER,
+  DEFAULT_PAGINATION,
+  DEFAULT_SORT,
+  HEADERS,
+  RESOURCES,
+  SHORTCUTS,
+  WELL_KNOWN,
+  all,
+  createDeleteHttpAction,
+  createExportUrlHttpAction,
+  createGetListHttpAction,
+  createGetSchemaHttpAction,
+  createGetSingleHttpAction,
+  createHttpActionsFor,
+  createHttpClient,
+  createPatchHttpAction,
+  createPostHttpAction,
+  createPutHttpAction,
+  del,
+  disposeHttpClient,
+  get,
+  getAuthenticatedParty,
+  httpActions,
+  isTokenValid,
+  normalizeResource,
+  patch,
+  post,
+  prepareParams,
+  put,
+  signin,
+  signout,
+  spread,
+};
