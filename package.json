@@ -1,6 +1,6 @@
 {
   "name": "@codetanzania/ewea-api-client",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "http client for EWEA API.",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -12,7 +12,7 @@
     "pretest": "npm run lint",
     "test": "NODE_ENV=test mocha --require @babel/register test/**/*.spec.js",
     "cmt": "git add -A && git-cz",
-    "changelog": "changelog"
+    "changelog": "changelog -x chore"
   },
   "repository": {
     "type": "git",
