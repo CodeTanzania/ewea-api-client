@@ -1,3 +1,13 @@
+#### 0.2.2 (2019-11-28)
+
+##### Bug Fixes
+
+- **client:** use seconds to validation token ([2fc15ce2](https://github.com/CodeTanzania/ewea-api-client/commit/2fc15ce27a8d4cee43d37d6058073018c4bb0cfd))
+
+##### Other Changes
+
+- CodeTanzania/ewea-api-client into develop ([5e8dd2ea](https://github.com/CodeTanzania/ewea-api-client/commit/5e8dd2eaa9d8db1fb03c333cb43df36834f68e31))
+
 #### 0.2.1 (2019-11-28)
 
 ##### Bug Fixes
