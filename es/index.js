@@ -1149,10 +1149,10 @@ const FEATURE_SHORTCUTS = {
 
 // predefine shortcuts
 const PREDEFINE_SHORTCUTS = {
-  partyGroup: {
-    shortcut: 'partyGroup',
+  administrativeLevel: {
+    shortcut: 'administrativeLevel',
     wellknown: 'predefine',
-    bucket: 'partygroups',
+    bucket: 'administrativelevels',
     params: mergeObjects(DEFAULT_PARAMS),
   },
   eventCertainty: {
@@ -1195,6 +1195,24 @@ const PREDEFINE_SHORTCUTS = {
     shortcut: 'eventUrgency',
     wellknown: 'predefine',
     bucket: 'eventurgencies',
+    params: mergeObjects(DEFAULT_PARAMS),
+  },
+  featureType: {
+    shortcut: 'featureTypes',
+    wellknown: 'predefine',
+    bucket: 'featuretypes',
+    params: mergeObjects(DEFAULT_PARAMS),
+  },
+  partyGroup: {
+    shortcut: 'partyGroups',
+    wellknown: 'predefine',
+    bucket: 'partygroups',
+    params: mergeObjects(DEFAULT_PARAMS),
+  },
+  partyRole: {
+    shortcut: 'partyRoles',
+    wellknown: 'predefine',
+    bucket: 'partyroles',
     params: mergeObjects(DEFAULT_PARAMS),
   },
 };
