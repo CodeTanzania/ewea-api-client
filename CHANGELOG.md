@@ -1,3 +1,19 @@
+#### 0.3.0 (2019-11-29)
+
+##### New Features
+
+- **predefines:** add party and adminstrative level endpoints ([d8f64d40](https://github.com/CodeTanzania/ewea-api-client/commit/d8f64d40d884f2a75f3779418c25887bcfe19b72))
+
+##### Bug Fixes
+
+- **deps:**
+  - update dependency @lykmapipo/env to >=0.15.1 ([0b1659fb](https://github.com/CodeTanzania/ewea-api-client/commit/0b1659fb3260e213d19cdd5c3680109e1f67b33a))
+  - update dependency @lykmapipo/common to >=0.28.13 ([880d09e8](https://github.com/CodeTanzania/ewea-api-client/commit/880d09e8d9d17aa987641d33828e36bf750cffe4))
+
+##### Other Changes
+
+- CodeTanzania/ewea-api-client into release/0.3.0 ([d32d07d6](https://github.com/CodeTanzania/ewea-api-client/commit/d32d07d61353e44867af97c445e673b368783869))
+
 #### 0.2.2 (2019-11-28)
 
 ##### Bug Fixes
