@@ -32,13 +32,10 @@ describe('emis api client', () => {
     expect(WELL_KNOWN).to.exist;
     expect(WELL_KNOWN).to.be.an('array');
     expect(WELL_KNOWN).to.be.eql([
-      'activity',
-      'alert',
       'assessment',
       'campaign',
+      'event',
       'feature',
-      'incident',
-      'incidentType',
       'indicator',
       'message',
       'party',
@@ -46,7 +43,6 @@ describe('emis api client', () => {
       'predefine',
       'question',
       'questionnaire',
-      'role',
     ]);
   });
 

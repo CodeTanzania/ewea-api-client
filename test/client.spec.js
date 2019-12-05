@@ -28,26 +28,22 @@ import {
 
 const {
   getSchemas,
-  getActivitySchema,
-  getAlertSchema,
+  getEventSchema,
   getAssessmentSchema,
   getFeatureSchema,
-  getIncidentSchema,
-  getIncidentTypeSchema,
   getIndicatorSchema,
   getPartySchema,
   getPermissionSchema,
   getPredefineSchema,
   getQuestionSchema,
   getQuestionnaireSchema,
-  getRoleSchema,
-  getAlerts,
-  getAlertsExportUrl,
-  getAlert,
-  postAlert,
-  putAlert,
-  patchAlert,
-  deleteAlert,
+  getEvents,
+  getEventsExportUrl,
+  getEvent,
+  postEvent,
+  putEvent,
+  patchEvent,
+  deleteEvent,
 } = httpActions;
 
 describe('http client', () => {
@@ -556,20 +552,15 @@ describe('http client', () => {
   it('should export EWEA resource http action shortcuts', () => {
     expect(createHttpActionsFor).to.exist;
     expect(getSchemas).to.exist;
-    expect(getActivitySchema).to.exist;
-    expect(getAlertSchema).to.exist;
+    expect(getEventSchema).to.exist;
     expect(getAssessmentSchema).to.exist;
     expect(getFeatureSchema).to.exist;
-    expect(getIncidentSchema).to.exist;
-    expect(getIncidentTypeSchema).to.exist;
     expect(getIndicatorSchema).to.exist;
     expect(getPartySchema).to.exist;
     expect(getPermissionSchema).to.exist;
     expect(getPredefineSchema).to.exist;
-    expect(getAlertSchema).to.exist;
     expect(getQuestionSchema).to.exist;
     expect(getQuestionnaireSchema).to.exist;
-    expect(getRoleSchema).to.exist;
   });
 
   it('should handle http get on /resource use generated actions', done => {
@@ -577,14 +568,14 @@ describe('http client', () => {
     process.env.EWEA_API_URL = baseUrl;
     const data = { data: [] };
     nock(baseUrl)
-      .get('/alerts')
+      .get('/events')
       .query(true)
       .reply(200, data);
 
-    getAlerts()
-      .then(alerts => {
-        expect(alerts).to.exist;
-        expect(alerts).to.be.eql(data);
+    getEvents()
+      .then(events => {
+        expect(events).to.exist;
+        expect(events).to.be.eql(data);
         done(null, data);
       })
       .catch(error => {
@@ -595,8 +586,8 @@ describe('http client', () => {
   it('should generate resource export url', () => {
     const baseUrl = 'https://api.emis.io/v1';
     process.env.EWEA_API_URL = baseUrl;
-    const url = getAlertsExportUrl();
-    expect(url).to.be.contain(`${baseUrl}/alerts/export`);
+    const url = getEventsExportUrl();
+    expect(url).to.be.contain(`${baseUrl}/events/export`);
   });
 
   it('should handle http get on /resource/:id use generated actions', done => {
@@ -604,14 +595,14 @@ describe('http client', () => {
     process.env.EWEA_API_URL = baseUrl;
     const data = {};
     nock(baseUrl)
-      .get('/alerts/5c1766243c9d520004e2b542')
+      .get('/events/5c1766243c9d520004e2b542')
       .query(true)
       .reply(200, data);
 
-    getAlert('5c1766243c9d520004e2b542')
-      .then(alert => {
-        expect(alert).to.exist;
-        expect(alert).to.be.eql(data);
+    getEvent('5c1766243c9d520004e2b542')
+      .then(event => {
+        expect(event).to.exist;
+        expect(event).to.be.eql(data);
         done(null, data);
       })
       .catch(error => {
@@ -624,14 +615,14 @@ describe('http client', () => {
     process.env.EWEA_API_URL = baseUrl;
     const data = {};
     nock(baseUrl)
-      .post('/alerts')
+      .post('/events')
       .query(true)
       .reply(201, data);
 
-    postAlert({ description: 'Voluptas' })
-      .then(alert => {
-        expect(alert).to.exist;
-        expect(alert).to.be.eql(data);
+    postEvent({ description: 'Voluptas' })
+      .then(event => {
+        expect(event).to.exist;
+        expect(event).to.be.eql(data);
         done(null, data);
       })
       .catch(error => {
@@ -644,14 +635,14 @@ describe('http client', () => {
     process.env.EWEA_API_URL = baseUrl;
     const data = {};
     nock(baseUrl)
-      .put('/alerts/5c1766243c9d520004e2b542')
+      .put('/events/5c1766243c9d520004e2b542')
       .query(true)
       .reply(200, data);
 
-    putAlert({ _id: '5c1766243c9d520004e2b542', description: 'Voluptas' })
-      .then(alert => {
-        expect(alert).to.exist;
-        expect(alert).to.be.eql(data);
+    putEvent({ _id: '5c1766243c9d520004e2b542', description: 'Voluptas' })
+      .then(event => {
+        expect(event).to.exist;
+        expect(event).to.be.eql(data);
         done(null, data);
       })
       .catch(error => {
@@ -664,14 +655,14 @@ describe('http client', () => {
     process.env.EWEA_API_URL = baseUrl;
     const data = {};
     nock(baseUrl)
-      .patch('/alerts/5c1766243c9d520004e2b542')
+      .patch('/events/5c1766243c9d520004e2b542')
       .query(true)
       .reply(200, data);
 
-    patchAlert({ _id: '5c1766243c9d520004e2b542', description: 'Voluptas' })
-      .then(alert => {
-        expect(alert).to.exist;
-        expect(alert).to.be.eql(data);
+    patchEvent({ _id: '5c1766243c9d520004e2b542', description: 'Voluptas' })
+      .then(event => {
+        expect(event).to.exist;
+        expect(event).to.be.eql(data);
         done(null, data);
       })
       .catch(error => {
@@ -684,14 +675,14 @@ describe('http client', () => {
     process.env.EWEA_API_URL = baseUrl;
     const data = {};
     nock(baseUrl)
-      .delete('/alerts/5c1766243c9d520004e2b542')
+      .delete('/events/5c1766243c9d520004e2b542')
       .query(true)
       .reply(200, data);
 
-    deleteAlert('5c1766243c9d520004e2b542')
-      .then(alert => {
-        expect(alert).to.exist;
-        expect(alert).to.be.eql(data);
+    deleteEvent('5c1766243c9d520004e2b542')
+      .then(event => {
+        expect(event).to.exist;
+        expect(event).to.be.eql(data);
         done(null, data);
       })
       .catch(error => {
@@ -704,21 +695,21 @@ describe('http client', () => {
     process.env.EWEA_API_URL = baseUrl;
     const data = [{}];
     nock(baseUrl)
-      .get('/incidenttypes/schema')
+      .get('/parties/schema')
       .query(true)
       .reply(200, data);
     nock(baseUrl)
-      .get('/alerts/schema')
+      .get('/events/schema')
       .query(true)
       .reply(200, data);
 
-    all(getIncidentTypeSchema(), getAlertSchema())
+    all(getPartySchema(), getEventSchema())
       .then(
-        spread((incidentTypeSchema, alertSchema) => {
-          expect(incidentTypeSchema).to.exist;
-          expect(alertSchema).to.exist;
-          expect(incidentTypeSchema).to.be.eql(data);
-          expect(alertSchema).to.be.eql(data);
+        spread((partySchema, eventSchema) => {
+          expect(partySchema).to.exist;
+          expect(eventSchema).to.exist;
+          expect(partySchema).to.be.eql(data);
+          expect(eventSchema).to.be.eql(data);
           done();
         })
       )
@@ -730,7 +721,7 @@ describe('http client', () => {
   it('should handle http get on /schemas', done => {
     const baseUrl = 'https://api.emis.io/v1';
     process.env.EWEA_API_URL = baseUrl;
-    const data = { Alert: {}, Feature: {} };
+    const data = { Event: {}, Feature: {} };
     nock(baseUrl)
       .get('/schemas')
       .query(true)
@@ -740,7 +731,7 @@ describe('http client', () => {
       .then(schemas => {
         expect(schemas).to.exist;
         expect(schemas).to.be.an('object');
-        expect(schemas.Alert).to.exist;
+        expect(schemas.Event).to.exist;
         expect(schemas.Feature).to.exist;
         expect(schemas.Warehouse).to.exist;
         done(null, data);

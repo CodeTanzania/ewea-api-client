@@ -47,13 +47,10 @@ export const DEFAULT_SORT = { updatedAt: -1 };
  * @public
  */
 export const WELL_KNOWN = [
-  'activity',
-  'alert',
   'assessment',
   'campaign',
+  'event',
   'feature',
-  'incident',
-  'incidentType',
   'indicator',
   'message',
   'party',
@@ -61,7 +58,6 @@ export const WELL_KNOWN = [
   'predefine',
   'question',
   'questionnaire',
-  'role',
 ];
 
 // default request params

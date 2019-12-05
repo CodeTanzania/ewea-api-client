@@ -1049,13 +1049,10 @@ const DEFAULT_SORT = { updatedAt: -1 };
  * @public
  */
 const WELL_KNOWN = [
-  'activity',
-  'alert',
   'assessment',
   'campaign',
+  'event',
   'feature',
-  'incident',
-  'incidentType',
   'indicator',
   'message',
   'party',
@@ -1063,7 +1060,6 @@ const WELL_KNOWN = [
   'predefine',
   'question',
   'questionnaire',
-  'role',
 ];
 
 // default request params
