@@ -1,3 +1,13 @@
+#### 0.4.0 (2019-12-05)
+
+##### Other Changes
+
+- CodeTanzania/ewea-api-client into develop ([b0298ccb](https://github.com/CodeTanzania/ewea-api-client/commit/b0298ccb27fa61a453e0bd6d1c3388ee56ac9384))
+
+##### Refactors
+
+- cleanup all resources which are not in ewea ([db9a8912](https://github.com/CodeTanzania/ewea-api-client/commit/db9a8912408a29facdafbbc37ef6b3248d170720))
+
 #### 0.3.0 (2019-11-29)
 
 ##### New Features
