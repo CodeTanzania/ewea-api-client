@@ -721,7 +721,7 @@ describe('http client', () => {
   it('should handle http get on /schemas', done => {
     const baseUrl = 'https://api.emis.io/v1';
     process.env.EWEA_API_URL = baseUrl;
-    const data = { Event: {}, Feature: {} };
+    const data = { Event: {}, Predefine: {} };
     nock(baseUrl)
       .get('/schemas')
       .query(true)
@@ -733,7 +733,6 @@ describe('http client', () => {
         expect(schemas).to.be.an('object');
         expect(schemas.Event).to.exist;
         expect(schemas.Feature).to.exist;
-        expect(schemas.Warehouse).to.exist;
         done(null, data);
       })
       .catch(error => {
