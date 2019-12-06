@@ -197,6 +197,12 @@ const PREDEFINE_SHORTCUTS = {
     bucket: 'featuretypes',
     params: mergeObjects(DEFAULT_PARAMS),
   },
+  feature: {
+    shortcut: 'features',
+    wellknown: 'predefine',
+    bucket: 'features',
+    params: mergeObjects(DEFAULT_PARAMS),
+  },
   partyGroup: {
     shortcut: 'partyGroups',
     wellknown: 'predefine',
