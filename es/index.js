@@ -1151,6 +1151,12 @@ const PREDEFINE_SHORTCUTS = {
     bucket: 'administrativelevels',
     params: mergeObjects(DEFAULT_PARAMS),
   },
+  administrativeArea: {
+    shortcut: 'administrativeArea',
+    wellknown: 'predefine',
+    bucket: 'administrativeareas',
+    params: mergeObjects(DEFAULT_PARAMS),
+  },
   eventCertainty: {
     shortcut: 'eventCertainty',
     wellknown: 'predefine',
@@ -1194,19 +1200,25 @@ const PREDEFINE_SHORTCUTS = {
     params: mergeObjects(DEFAULT_PARAMS),
   },
   featureType: {
-    shortcut: 'featureTypes',
+    shortcut: 'featureType',
     wellknown: 'predefine',
     bucket: 'featuretypes',
     params: mergeObjects(DEFAULT_PARAMS),
   },
+  feature: {
+    shortcut: 'feature',
+    wellknown: 'predefine',
+    bucket: 'features',
+    params: mergeObjects(DEFAULT_PARAMS),
+  },
   partyGroup: {
-    shortcut: 'partyGroups',
+    shortcut: 'partyGroup',
     wellknown: 'predefine',
     bucket: 'partygroups',
     params: mergeObjects(DEFAULT_PARAMS),
   },
   partyRole: {
-    shortcut: 'partyRoles',
+    shortcut: 'partyRole',
     wellknown: 'predefine',
     bucket: 'partyroles',
     params: mergeObjects(DEFAULT_PARAMS),
