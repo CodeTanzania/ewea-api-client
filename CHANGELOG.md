@@ -1,3 +1,18 @@
+#### 0.5.0 (2019-12-06)
+
+##### New Features
+
+- add administrative areas resource ([16e782b2](https://github.com/CodeTanzania/ewea-api-client/commit/16e782b27a106b391cfc334f58e28dd9d2abdb7a))
+- add features resource endpoint ([ba83a7ac](https://github.com/CodeTanzania/ewea-api-client/commit/ba83a7ac6eac746a40cc6f4d2c0788e6a996cac0))
+
+##### Other Changes
+
+- CodeTanzania/ewea-api-client into develop ([e0ecc0e2](https://github.com/CodeTanzania/ewea-api-client/commit/e0ecc0e21048a13603fc1eb30adeff2fb2d1b1dc))
+
+##### Tests
+
+- **client:** fix issue with get /schema to handle predefine ([95d3808c](https://github.com/CodeTanzania/ewea-api-client/commit/95d3808cb116f0b0d7f54acdae03d5bfd3ee741e))
+
 #### 0.4.0 (2019-12-05)
 
 ##### Other Changes
