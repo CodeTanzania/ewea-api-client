@@ -1,3 +1,9 @@
+#### 0.6.0 (2019-12-12)
+
+##### New Features
+
+- add notification template resource ([25d9114b](https://github.com/CodeTanzania/ewea-api-client/commit/25d9114b68310e1ad8fe9c32d8f90079242abbd8))
+
 #### 0.5.0 (2019-12-06)
 
 ##### New Features
