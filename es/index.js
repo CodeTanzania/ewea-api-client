@@ -1211,6 +1211,12 @@ const PREDEFINE_SHORTCUTS = {
     bucket: 'features',
     params: mergeObjects(DEFAULT_PARAMS),
   },
+  notificationTemplate: {
+    shortcut: 'notificationTemplate',
+    wellknown: 'predefine',
+    bucket: 'features',
+    params: mergeObjects(DEFAULT_PARAMS),
+  },
   partyGroup: {
     shortcut: 'partyGroup',
     wellknown: 'predefine',
