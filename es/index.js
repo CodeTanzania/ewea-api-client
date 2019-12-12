@@ -1214,7 +1214,7 @@ const PREDEFINE_SHORTCUTS = {
   notificationTemplate: {
     shortcut: 'notificationTemplate',
     wellknown: 'predefine',
-    bucket: 'features',
+    bucket: 'notificationtemplates',
     params: mergeObjects(DEFAULT_PARAMS),
   },
   partyGroup: {
