@@ -1,3 +1,18 @@
+#### 0.6.1 (2019-12-12)
+
+##### Bug Fixes
+
+- point notification templates to right predefine bucket ([ac0194d7](https://github.com/CodeTanzania/ewea-api-client/commit/ac0194d7054032ff1af22c1a2cee29148fa08d79))
+- **deps:**
+  - update dependency @lykmapipo/env to >=0.16.0 ([cabb89d2](https://github.com/CodeTanzania/ewea-api-client/commit/cabb89d24dc2166f803b40fcd0f622929e67b2dc))
+  - update dependency @lykmapipo/common to >=0.29.0 ([6beacb3f](https://github.com/CodeTanzania/ewea-api-client/commit/6beacb3f2c94869375185b9c54d40491ff09d034))
+  - update dependency @lykmapipo/env to >=0.15.2 ([7c769409](https://github.com/CodeTanzania/ewea-api-client/commit/7c76940963df073e3306b9dbcd276c185d231750))
+  - update dependency @lykmapipo/common to >=0.28.14 ([b4e6728e](https://github.com/CodeTanzania/ewea-api-client/commit/b4e6728ecd76d7a3dbca058b0fc777d200830ff7))
+
+##### Other Changes
+
+- CodeTanzania/ewea-api-client into develop ([3dac4dae](https://github.com/CodeTanzania/ewea-api-client/commit/3dac4dae1d13d553d27e30762cf1d6b9b124f7d2))
+
 #### 0.6.0 (2019-12-12)
 
 ##### New Features
