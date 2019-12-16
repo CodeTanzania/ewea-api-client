@@ -49,6 +49,7 @@ export const DEFAULT_SORT = { updatedAt: -1 };
 export const WELL_KNOWN = [
   'assessment',
   'campaign',
+  'changelog',
   'event',
   'indicator',
   'message',
