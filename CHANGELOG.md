@@ -1,3 +1,13 @@
+#### 0.6.2 (2019-12-16)
+
+##### Bug Fixes
+
+- **client:** use feature endpoint from predefines ([bf63ceae](https://github.com/CodeTanzania/ewea-api-client/commit/bf63ceae5c956e90699af6a4c0758f06e2f72b9b))
+
+##### Tests
+
+- **index:** remove feature from wellknow resource ([fc66805e](https://github.com/CodeTanzania/ewea-api-client/commit/fc66805ec7de69b83939ffcc0b027c948818729e))
+
 #### 0.6.1 (2019-12-12)
 
 ##### Bug Fixes

@@ -35,7 +35,6 @@ describe('emis api client', () => {
       'assessment',
       'campaign',
       'event',
-      'feature',
       'indicator',
       'message',
       'party',
