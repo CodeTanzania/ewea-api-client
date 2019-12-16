@@ -1052,7 +1052,6 @@ const WELL_KNOWN = [
   'assessment',
   'campaign',
   'event',
-  'feature',
   'indicator',
   'message',
   'party',
@@ -1088,60 +1087,60 @@ const PARTY_SHORTCUTS = {
 };
 
 // features shortcuts
-const FEATURE_SHORTCUTS = {
-  region: {
-    shortcut: 'region',
-    wellknown: 'feature',
-    params: mergeObjects(DEFAULT_PARAMS, {
-      filter: {
-        nature: 'Boundary',
-        family: 'Administrative',
-        type: 'Region',
-      },
-    }),
-  },
-  district: {
-    shortcut: 'district',
-    wellknown: 'feature',
-    params: mergeObjects(DEFAULT_PARAMS, {
-      filter: {
-        nature: 'Boundary',
-        family: 'Administrative',
-        type: 'District',
-      },
-    }),
-  },
-  ward: {
-    shortcut: 'ward',
-    wellknown: 'feature',
-    params: mergeObjects(DEFAULT_PARAMS, {
-      filter: {
-        nature: 'Boundary',
-        family: 'Administrative',
-        type: 'Ward',
-      },
-    }),
-  },
-  warehouse: {
-    shortcut: 'warehouse',
-    wellknown: 'feature',
-    params: mergeObjects(DEFAULT_PARAMS, {
-      filter: {
-        nature: 'Building',
-        family: 'Warehouse',
-      },
-    }),
-  },
-  jurisdiction: {
-    shortcut: 'jurisdiction',
-    wellknown: 'feature',
-    params: mergeObjects(DEFAULT_PARAMS, {
-      filter: {
-        family: 'Administrative',
-      },
-    }),
-  },
-};
+// const FEATURE_SHORTCUTS = {
+//   region: {
+//     shortcut: 'region',
+//     wellknown: 'feature',
+//     params: mergeObjects(DEFAULT_PARAMS, {
+//       filter: {
+//         nature: 'Boundary',
+//         family: 'Administrative',
+//         type: 'Region',
+//       },
+//     }),
+//   },
+//   district: {
+//     shortcut: 'district',
+//     wellknown: 'feature',
+//     params: mergeObjects(DEFAULT_PARAMS, {
+//       filter: {
+//         nature: 'Boundary',
+//         family: 'Administrative',
+//         type: 'District',
+//       },
+//     }),
+//   },
+//   ward: {
+//     shortcut: 'ward',
+//     wellknown: 'feature',
+//     params: mergeObjects(DEFAULT_PARAMS, {
+//       filter: {
+//         nature: 'Boundary',
+//         family: 'Administrative',
+//         type: 'Ward',
+//       },
+//     }),
+//   },
+//   warehouse: {
+//     shortcut: 'warehouse',
+//     wellknown: 'feature',
+//     params: mergeObjects(DEFAULT_PARAMS, {
+//       filter: {
+//         nature: 'Building',
+//         family: 'Warehouse',
+//       },
+//     }),
+//   },
+//   jurisdiction: {
+//     shortcut: 'jurisdiction',
+//     wellknown: 'feature',
+//     params: mergeObjects(DEFAULT_PARAMS, {
+//       filter: {
+//         family: 'Administrative',
+//       },
+//     }),
+//   },
+// };
 
 // predefine shortcuts
 const PREDEFINE_SHORTCUTS = {
@@ -1242,7 +1241,7 @@ const PREDEFINE_SHORTCUTS = {
  * @public
  */
 const SHORTCUTS = mergeObjects(
-  FEATURE_SHORTCUTS,
+  // FEATURE_SHORTCUTS,
   PARTY_SHORTCUTS,
   PREDEFINE_SHORTCUTS
 );
