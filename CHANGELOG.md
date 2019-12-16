@@ -1,3 +1,13 @@
+#### 0.7.0 (2019-12-16)
+
+##### New Features
+
+- **client:** add changelog endpoint ([74380dd2](https://github.com/CodeTanzania/ewea-api-client/commit/74380dd2d124fa1437626aaf9867638fe036323e))
+
+##### Other Changes
+
+- CodeTanzania/ewea-api-client into develop ([4ab8edeb](https://github.com/CodeTanzania/ewea-api-client/commit/4ab8edeb92fc2cc17ee2c8a27aa66bc9630f8cfb))
+
 #### 0.6.2 (2019-12-16)
 
 ##### Bug Fixes

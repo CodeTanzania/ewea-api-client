@@ -34,6 +34,7 @@ describe('emis api client', () => {
     expect(WELL_KNOWN).to.be.eql([
       'assessment',
       'campaign',
+      'changelog',
       'event',
       'indicator',
       'message',
