@@ -1051,6 +1051,7 @@ const DEFAULT_SORT = { updatedAt: -1 };
 const WELL_KNOWN = [
   'assessment',
   'campaign',
+  'changelog',
   'event',
   'indicator',
   'message',
@@ -1162,6 +1163,12 @@ const PREDEFINE_SHORTCUTS = {
     bucket: 'eventcertainties',
     params: mergeObjects(DEFAULT_PARAMS),
   },
+  eventAction: {
+    shortcut: 'eventAction',
+    wellknown: 'predefine',
+    bucket: 'eventactions',
+    params: mergeObjects(DEFAULT_PARAMS),
+  },
   eventFunction: {
     shortcut: 'eventFunction',
     wellknown: 'predefine',
@@ -1172,6 +1179,18 @@ const PREDEFINE_SHORTCUTS = {
     shortcut: 'eventGroup',
     wellknown: 'predefine',
     bucket: 'eventgroups',
+    params: mergeObjects(DEFAULT_PARAMS),
+  },
+  eventIndicator: {
+    shortcut: 'eventIndicator',
+    wellknown: 'predefine',
+    bucket: 'eventindicators',
+    params: mergeObjects(DEFAULT_PARAMS),
+  },
+  eventQuestion: {
+    shortcut: 'eventQuestion',
+    wellknown: 'predefine',
+    bucket: 'eventquestions',
     params: mergeObjects(DEFAULT_PARAMS),
   },
   eventSeverity: {
@@ -1226,6 +1245,12 @@ const PREDEFINE_SHORTCUTS = {
     shortcut: 'partyRole',
     wellknown: 'predefine',
     bucket: 'partyroles',
+    params: mergeObjects(DEFAULT_PARAMS),
+  },
+  unit: {
+    shortcut: 'unit',
+    wellknown: 'predefine',
+    bucket: 'units',
     params: mergeObjects(DEFAULT_PARAMS),
   },
 };
