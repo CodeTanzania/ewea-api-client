@@ -161,6 +161,12 @@ const PREDEFINE_SHORTCUTS = {
     bucket: 'eventcertainties',
     params: mergeObjects(DEFAULT_PARAMS),
   },
+  eventAction: {
+    shortcut: 'eventAction',
+    wellknown: 'predefine',
+    bucket: 'eventactions',
+    params: mergeObjects(DEFAULT_PARAMS),
+  },
   eventFunction: {
     shortcut: 'eventFunction',
     wellknown: 'predefine',
