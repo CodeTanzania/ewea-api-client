@@ -1,3 +1,10 @@
+#### 0.8.0 (2019-12-17)
+
+##### New Features
+
+- **common:** add indictor, unit, event actions and question ([594379fb](https://github.com/CodeTanzania/ewea-api-client/commit/594379fb69076900ac9f49832f0aad8b1bb687a1))
+- **event-action:** add event actions to predefine shortcuts ([b1db7a73](https://github.com/CodeTanzania/ewea-api-client/commit/b1db7a73ba0e2d30c0f638c50b7e3c2f0e97b77e))
+
 #### 0.7.0 (2019-12-16)
 
 ##### New Features
