@@ -6,6 +6,7 @@ export default [
     external: [
       'axios',
       'axios/lib/helpers/buildURL',
+      'form-data',
       'inflection',
       'lodash',
       'moment',
