@@ -1,5 +1,6 @@
 import moment from 'moment';
 import axios from 'axios';
+import FormData from 'form-data';
 import buildURL from 'axios/lib/helpers/buildURL';
 import jwtDecode from 'jwt-decode';
 import { singularize, pluralize } from 'inflection';
@@ -445,7 +446,7 @@ const get = (url, params) => {
  * @param {Object} data request payload to be encoded on http request body
  * @return {Promise} promise resolve with data on success or error on failure.
  * @since 0.1.0
- * @version 0.1.0
+ * @version 0.1.1
  * @example
  * import { post } from 'ewea-api-client';
  *
@@ -453,7 +454,7 @@ const get = (url, params) => {
  * postUser.then(user => { ... }).catch(error => { ... });
  */
 const post = (url, data) => {
-  if (isEmpty(data)) {
+  if (!(data instanceof FormData) && isEmpty(data)) {
     return Promise.reject(new Error('Missing Payload'));
   }
   const httpClient = createHttpClient();
@@ -468,7 +469,7 @@ const post = (url, data) => {
  * @param {Object} data request payload to be encoded on http request body
  * @return {Promise} promise resolve with data on success or error on failure.
  * @since 0.1.0
- * @version 0.1.0
+ * @version 0.1.1
  * @example
  * import { put } from 'ewea-api-client';
  *
@@ -476,7 +477,7 @@ const post = (url, data) => {
  * putUser.then(user => { ... }).catch(error => { ... });
  */
 const put = (url, data) => {
-  if (isEmpty(data)) {
+  if (!(data instanceof FormData) && isEmpty(data)) {
     return Promise.reject(new Error('Missing Payload'));
   }
   const httpClient = createHttpClient();
@@ -491,7 +492,7 @@ const put = (url, data) => {
  * @param {Object} data request payload to be encoded on http request body
  * @return {Promise} promise resolve with data on success or error on failure.
  * @since 0.1.0
- * @version 0.1.0
+ * @version 0.1.1
  * @example
  * import { patch } from 'ewea-api-client';
  *
@@ -499,7 +500,7 @@ const put = (url, data) => {
  * patchUser.then(user => { ... }).catch(error => { ... });
  */
 const patch = (url, data) => {
-  if (isEmpty(data)) {
+  if (!(data instanceof FormData) && isEmpty(data)) {
     return Promise.reject(new Error('Missing Payload'));
   }
   const httpClient = createHttpClient();
@@ -815,7 +816,8 @@ const createPostHttpAction = resource => {
     [methodName]: payload => {
       // prepare data
       const defaults = omit((resource.params || {}).filter, 'deletedAt');
-      const data = mergeObjects(payload, defaults);
+      const data =
+        payload instanceof FormData ? payload : mergeObjects(payload, defaults);
       // derive endpoint
       let endpoint = `/${toLower(plural)}`;
       if (!isEmpty(bucket)) {
@@ -861,7 +863,8 @@ const createPutHttpAction = resource => {
     [methodName]: payload => {
       // prepare data
       const defaults = omit((resource.params || {}).filter, 'deletedAt');
-      const data = mergeObjects(payload, defaults);
+      const data =
+        payload instanceof FormData ? payload : mergeObjects(payload, defaults);
       // derive endpoint
       let endpoint = `/${toLower(plural)}/${idOf(data)}`;
       if (!isEmpty(bucket)) {
@@ -907,7 +910,8 @@ const createPatchHttpAction = resource => {
     [methodName]: payload => {
       // prepare data
       const defaults = omit((resource.params || {}).filter, 'deletedAt');
-      const data = mergeObjects(payload, defaults);
+      const data =
+        payload instanceof FormData ? payload : mergeObjects(payload, defaults);
       // derive endpoint
       let endpoint = `/${toLower(plural)}/${idOf(data)}`;
       if (!isEmpty(bucket)) {
@@ -1075,7 +1079,7 @@ const PARTY_SHORTCUTS = {
     shortcut: 'focalPerson',
     wellknown: 'party',
     params: mergeObjects(DEFAULT_PARAMS, {
-      filter: { type: 'Focal Person' },
+      filter: { type: 'Focal' },
     }),
   },
   agency: {
