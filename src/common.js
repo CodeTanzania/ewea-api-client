@@ -73,7 +73,7 @@ const PARTY_SHORTCUTS = {
     shortcut: 'focalPerson',
     wellknown: 'party',
     params: mergeObjects(DEFAULT_PARAMS, {
-      filter: { type: 'Focal Person' },
+      filter: { type: 'Focal' },
     }),
   },
   agency: {
