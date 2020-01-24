@@ -1,3 +1,31 @@
+#### 0.8.1 (2020-01-24)
+
+##### Bug Fixes
+
+- alow sending multiparty request with form data ([6c601b7c](https://github.com/CodeTanzania/ewea-api-client/commit/6c601b7c6162d52f5939d9cb793a486778ba200f))
+- **deps:**
+  - update dependency @lykmapipo/env to >=0.16.5 ([8c99323b](https://github.com/CodeTanzania/ewea-api-client/commit/8c99323b06c26046dfd296f4b698b1d9a24b8ee0))
+  - update dependency @lykmapipo/common to >=0.30.3 ([c151b5e8](https://github.com/CodeTanzania/ewea-api-client/commit/c151b5e8ae547e910e388913132ad3190ecda791))
+  - update dependency axios to >=0.19.2 ([a84651ff](https://github.com/CodeTanzania/ewea-api-client/commit/a84651ff0631d50ab5b3ab60ec21167370200ef7))
+  - update dependency @lykmapipo/env to >=0.16.4 ([df190cd0](https://github.com/CodeTanzania/ewea-api-client/commit/df190cd0f625739ae32a7aaea9f1e93595a38a3e))
+  - update dependency @lykmapipo/common to >=0.30.2 ([c7ecd7df](https://github.com/CodeTanzania/ewea-api-client/commit/c7ecd7df24f428780836ab68885045d0c0b0d54f))
+  - update dependency @lykmapipo/env to >=0.16.3 ([9e370284](https://github.com/CodeTanzania/ewea-api-client/commit/9e37028473ea4e81dfdfc5ee68001b5879bef7e9))
+  - update dependency @lykmapipo/common to >=0.30.1 ([5c6a0d0b](https://github.com/CodeTanzania/ewea-api-client/commit/5c6a0d0bc72aa9cfe90027928be2e2cf35e005af))
+  - update dependency axios to >=0.19.1 ([e90ebe0f](https://github.com/CodeTanzania/ewea-api-client/commit/e90ebe0fde36b52b0bb4fe9c2feba7be8c928c20))
+  - update dependency @lykmapipo/common to >=0.30.0 ([92cf5b73](https://github.com/CodeTanzania/ewea-api-client/commit/92cf5b73214be182771ae26251b4483692dbcea2))
+  - update dependency @lykmapipo/env to >=0.16.2 ([c052ed5d](https://github.com/CodeTanzania/ewea-api-client/commit/c052ed5dd7f4930eb2ac0e01d468cfa1e55f2170))
+  - update dependency @lykmapipo/common to >=0.29.2 ([0d38b563](https://github.com/CodeTanzania/ewea-api-client/commit/0d38b563f9e5e191bd2873ee12b3d443295e7b9c))
+  - update dependency @lykmapipo/env to >=0.16.1 ([cfd73641](https://github.com/CodeTanzania/ewea-api-client/commit/cfd736414efe8da7ab882a4c81173c34d4ddd2d8))
+  - update dependency @lykmapipo/common to >=0.29.1 ([a87c340b](https://github.com/CodeTanzania/ewea-api-client/commit/a87c340bf27876421ed5e790d4a49fa565ba0c9e))
+
+##### Other Changes
+
+- CodeTanzania/ewea-api-client into develop ([ffe19a8e](https://github.com/CodeTanzania/ewea-api-client/commit/ffe19a8e20362ad77ef88e7495b6f817401db231))
+
+##### Refactors
+
+- **common:** update type for focal people shortcut ([db4d8087](https://github.com/CodeTanzania/ewea-api-client/commit/db4d8087a22519c00ebb7052c7dc21d31f89b10d))
+
 #### 0.8.0 (2019-12-17)
 
 ##### New Features

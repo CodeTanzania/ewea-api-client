@@ -1,6 +1,6 @@
 {
   "name": "@codetanzania/ewea-api-client",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "http client for EWEA API.",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -39,36 +39,37 @@
   },
   "homepage": "https://github.com/CodeTanzania/ewea-api-client#readme",
   "devDependencies": {
-    "@babel/cli": "^7.7.5",
-    "@babel/core": "^7.7.5",
-    "@babel/node": "^7.7.4",
-    "@babel/preset-env": "^7.7.6",
-    "@babel/register": "^7.7.4",
-    "@commitlint/cli": "^8.2.0",
-    "@commitlint/config-conventional": "^8.2.0",
-    "@commitlint/travis-cli": "^8.2.0",
+    "@babel/cli": "^7.8.3",
+    "@babel/core": "^7.8.3",
+    "@babel/node": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
+    "@babel/register": "^7.8.3",
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "@commitlint/travis-cli": "^8.3.5",
     "chai": "^4.2.0",
     "commitizen": "^4.0.3",
     "cz-conventional-changelog": "^3.0.2",
-    "eslint": "^6.7.2",
+    "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.0.0",
-    "eslint-config-prettier": "^6.7.0",
-    "eslint-plugin-import": "^2.19.1",
+    "eslint-config-prettier": "^6.9.0",
+    "eslint-plugin-import": "^2.20.0",
     "eslint-plugin-mocha": "^6.2.2",
     "eslint-plugin-prettier": "^3.1.2",
     "generate-changelog": "^1.8.0",
-    "husky": "^3.1.0",
-    "lint-staged": "^9.5.0",
-    "mocha": "^6.2.2",
-    "nock": "^11.7.0",
+    "husky": "^4.2.1",
+    "lint-staged": "^10.0.2",
+    "mocha": "^7.0.0",
+    "nock": "^11.7.2",
     "prettier": "^1.19.1",
     "rimraf": "^3.0.0",
-    "rollup": "^1.27.13"
+    "rollup": "^1.29.1"
   },
   "dependencies": {
-    "@lykmapipo/common": ">=0.29.0",
-    "@lykmapipo/env": ">=0.16.0",
-    "axios": ">=0.19.0",
+    "@lykmapipo/common": ">=0.30.3",
+    "@lykmapipo/env": ">=0.16.5",
+    "axios": ">=0.19.2",
+    "form-data": "^3.0.0",
     "inflection": ">=1.12.0",
     "jwt-decode": "^2.2.0",
     "lodash": ">=4.17.15",
@@ -86,12 +87,10 @@
   },
   "lint-staged": {
     "*.js": [
-      "eslint --fix",
-      "git add"
+      "eslint --fix"
     ],
     "*.{md,json}": [
-      "prettier --write",
-      "git add"
+      "prettier --write"
     ]
   },
   "husky": {
