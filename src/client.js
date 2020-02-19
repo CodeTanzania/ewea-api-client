@@ -369,6 +369,19 @@ export const createHttpClient = API_BASE_URL => {
 };
 
 /**
+ * @function
+ * @name getBaseUrl
+ * @description Retrieve API base url string
+ *
+ * @returns {string} Base URL
+ * @version 0.1.0
+ * @since 0.8.2
+ * @public
+ * @static
+ */
+export const getBaseUrl = () => BASE_URL;
+
+/**
  * @function disposeHttpClient
  * @name disposeHttpClient
  * @description reset current http client in use.

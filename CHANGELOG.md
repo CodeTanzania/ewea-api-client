@@ -1,3 +1,17 @@
+#### 0.8.2 (2020-02-19)
+
+##### New Features
+
+- **client:** expose base url ([63f6a19a](https://github.com/CodeTanzania/ewea-api-client/commit/63f6a19af1140e9432ab017b5340c7ee5d616e7f))
+
+##### Bug Fixes
+
+- **deps:**
+  - update dependency @lykmapipo/env to >=0.16.7 ([5fe6d393](https://github.com/CodeTanzania/ewea-api-client/commit/5fe6d39351837d69b434d48b4814da290b228685))
+  - update dependency @lykmapipo/common to >=0.30.5 ([2e364427](https://github.com/CodeTanzania/ewea-api-client/commit/2e364427639de74f2f3899e233a8c1ec65f92e4b))
+  - update dependency @lykmapipo/env to >=0.16.6 ([829cc24c](https://github.com/CodeTanzania/ewea-api-client/commit/829cc24c337cd9405f47372f2299a5898a1a5cd3))
+  - update dependency @lykmapipo/common to >=0.30.4 ([627dcb1b](https://github.com/CodeTanzania/ewea-api-client/commit/627dcb1b6502264f9f59fad6a382782f76f66b38))
+
 #### 0.8.1 (2020-01-24)
 
 ##### Bug Fixes
