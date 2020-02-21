@@ -1,3 +1,9 @@
+#### 0.9.0 (2020-02-21)
+
+##### New Features
+
+- **client:** expose event actions catalogue endpoint ([9f793522](https://github.com/CodeTanzania/ewea-api-client/commit/9f7935220bcac5bf601fdf8b04379753449f1347))
+
 #### 0.8.2 (2020-02-19)
 
 ##### New Features
