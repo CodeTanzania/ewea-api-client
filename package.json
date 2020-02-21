@@ -1,6 +1,6 @@
 {
   "name": "@codetanzania/ewea-api-client",
-  "version": "0.8.2",
+  "version": "0.9.0",
   "description": "http client for EWEA API.",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -54,13 +54,13 @@
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-import": "^2.20.1",
-    "eslint-plugin-mocha": "^6.2.2",
+    "eslint-plugin-mocha": "^6.3.0",
     "eslint-plugin-prettier": "^3.1.2",
     "generate-changelog": "^1.8.0",
     "husky": "^4.2.3",
     "lint-staged": "^10.0.7",
     "mocha": "^7.0.1",
-    "nock": "^11.9.0",
+    "nock": "^12.0.1",
     "prettier": "^1.19.1",
     "rimraf": "^3.0.2",
     "rollup": "^1.31.1"

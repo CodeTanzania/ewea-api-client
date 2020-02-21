@@ -1228,6 +1228,12 @@ const PREDEFINE_SHORTCUTS = {
     bucket: 'eventtypes',
     params: mergeObjects(DEFAULT_PARAMS),
   },
+  eventActionCatalogue: {
+    shortcut: 'eventActionCatalogue',
+    wellknown: 'predefine',
+    bucket: 'eventactoincatalogues',
+    params: mergeObjects(DEFAULT_PARAMS),
+  },
   eventUrgency: {
     shortcut: 'eventUrgency',
     wellknown: 'predefine',
