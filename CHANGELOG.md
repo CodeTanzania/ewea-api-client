@@ -1,3 +1,9 @@
+#### 0.10.0 (2020-02-24)
+
+##### New Features
+
+- **event-type:** expose event level endpoint ([2c27e7af](https://github.com/CodeTanzania/ewea-api-client/commit/2c27e7af2469904a487585105326c6beea6211c1))
+
 #### 0.9.0 (2020-02-21)
 
 ##### New Features
