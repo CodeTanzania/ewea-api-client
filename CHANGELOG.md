@@ -1,3 +1,9 @@
+#### 0.10.1 (2020-02-24)
+
+##### Bug Fixes
+
+- **client:** correct a typo on event action catalogue bucket name ([e2feee25](https://github.com/CodeTanzania/ewea-api-client/commit/e2feee25a9cfb1549ca9dfd37c5e71e4b551bc09))
+
 #### 0.10.0 (2020-02-24)
 
 ##### New Features
