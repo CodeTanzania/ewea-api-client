@@ -1204,6 +1204,12 @@ const PREDEFINE_SHORTCUTS = {
     bucket: 'eventindicators',
     params: mergeObjects(DEFAULT_PARAMS),
   },
+  eventLevel: {
+    shortcut: 'eventLevel',
+    wellknown: 'predefine',
+    bucket: 'eventlevels',
+    params: mergeObjects(DEFAULT_PARAMS),
+  },
   eventQuestion: {
     shortcut: 'eventQuestion',
     wellknown: 'predefine',
