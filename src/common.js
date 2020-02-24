@@ -218,7 +218,7 @@ const PREDEFINE_SHORTCUTS = {
   eventActionCatalogue: {
     shortcut: 'eventActionCatalogue',
     wellknown: 'predefine',
-    bucket: 'eventactoincatalogues',
+    bucket: 'eventactioncatalogues',
     params: mergeObjects(DEFAULT_PARAMS),
   },
   eventUrgency: {
