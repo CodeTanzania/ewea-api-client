@@ -1228,6 +1228,12 @@ const PREDEFINE_SHORTCUTS = {
     bucket: 'eventstatuses',
     params: mergeObjects(DEFAULT_PARAMS),
   },
+  eventTopic: {
+    shortcut: 'eventTopic',
+    wellknown: 'predefine',
+    bucket: 'eventtopics',
+    params: mergeObjects(DEFAULT_PARAMS),
+  },
   eventType: {
     shortcut: 'eventType',
     wellknown: 'predefine',
