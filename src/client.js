@@ -273,17 +273,21 @@ const mapRange = range => {
 export const CONTENT_TYPE = 'application/json';
 
 /**
- * @name HEADERS
- * @description default http headers
+ * @function
+ * @name getHeaders
+ * @description get default http headers
  * @since 0.1.0
- * @version 0.1.0
+ * @version 0.2.0
  * @static
  * @public
  */
-export const HEADERS = {
-  Accept: CONTENT_TYPE,
-  'Content-Type': CONTENT_TYPE,
-  Authorization: `Bearer ${getJwtToken()}`,
+export const getHeaders = () => {
+  const token = getJwtToken();
+  return mergeObjects({
+    Accept: CONTENT_TYPE,
+    'Content-Type': CONTENT_TYPE,
+    Authorization: token ? `Bearer ${token}` : undefined,
+  });
 };
 
 /**
@@ -361,7 +365,7 @@ export const createHttpClient = API_BASE_URL => {
     const EWEA_API_URL = getString('EWEA_API_URL');
     const REACT_APP_EWEA_API_URL = getString('REACT_APP_EWEA_API_URL');
     BASE_URL = API_BASE_URL || EWEA_API_URL || REACT_APP_EWEA_API_URL;
-    const options = { baseURL: BASE_URL, headers: HEADERS };
+    const options = { baseURL: BASE_URL, headers: getHeaders() };
     client = axios.create(options);
     client.id = Date.now();
   }
@@ -446,7 +450,9 @@ export const spread = axios.spread; // eslint-disable-line
 export const get = (url, params) => {
   const httpClient = createHttpClient();
   const options = prepareParams(params);
-  return wrapRequest(httpClient.get(url, { params: options }));
+  return wrapRequest(
+    httpClient.get(url, { params: options, headers: getHeaders() })
+  );
 };
 
 /**
@@ -469,7 +475,7 @@ export const post = (url, data) => {
     return Promise.reject(new Error('Missing Payload'));
   }
   const httpClient = createHttpClient();
-  return wrapRequest(httpClient.post(url, data));
+  return wrapRequest(httpClient.post(url, data, { headers: getHeaders() }));
 };
 
 /**
@@ -492,7 +498,7 @@ export const put = (url, data) => {
     return Promise.reject(new Error('Missing Payload'));
   }
   const httpClient = createHttpClient();
-  return wrapRequest(httpClient.put(url, data));
+  return wrapRequest(httpClient.put(url, data, { headers: getHeaders() }));
 };
 
 /**
@@ -515,7 +521,7 @@ export const patch = (url, data) => {
     return Promise.reject(new Error('Missing Payload'));
   }
   const httpClient = createHttpClient();
-  return wrapRequest(httpClient.patch(url, data));
+  return wrapRequest(httpClient.patch(url, data, { headers: getHeaders() }));
 };
 
 /**
@@ -534,7 +540,7 @@ export const patch = (url, data) => {
  */
 export const del = url => {
   const httpClient = createHttpClient();
-  return wrapRequest(httpClient.delete(url));
+  return wrapRequest(httpClient.delete(url, { headers: getHeaders() }));
 };
 
 /**
