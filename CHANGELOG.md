@@ -1,3 +1,9 @@
+#### 0.11.1 (2020-03-02)
+
+##### Bug Fixes
+
+- **client:** ensure authorization token is set on http requests ([4d216f92](https://github.com/CodeTanzania/ewea-api-client/commit/4d216f9231fe69238012f9a4f457fbc3efbc2d7a))
+
 #### 0.11.0 (2020-03-02)
 
 ##### New Features
