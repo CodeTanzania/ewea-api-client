@@ -1391,6 +1391,7 @@ export {
   getAuthenticatedParty,
   getBaseUrl,
   getHeaders,
+  getJwtToken,
   httpActions,
   isTokenValid,
   normalizeResource,

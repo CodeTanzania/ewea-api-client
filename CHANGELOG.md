@@ -1,3 +1,9 @@
+#### 0.11.2 (2020-03-02)
+
+##### New Features
+
+- **client:** expose jwt token for external use ([c908b4bf](https://github.com/CodeTanzania/ewea-api-client/commit/c908b4bf8725e25887ffcc043bb7a38a4ed52824))
+
 #### 0.11.1 (2020-03-02)
 
 ##### Bug Fixes

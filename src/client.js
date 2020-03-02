@@ -39,7 +39,7 @@ const isBrowser =
  * @since 0.14.0
  * @version 0.1.1
  */
-const getJwtToken = () => {
+export const getJwtToken = () => {
   if (isEmpty(jwtToken) && isBrowser) {
     jwtToken = sessionStorage.getItem('token'); // eslint-disable-line
   }
