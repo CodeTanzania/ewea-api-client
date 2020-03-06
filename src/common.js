@@ -155,10 +155,40 @@ const PREDEFINE_SHORTCUTS = {
     bucket: 'administrativeareas',
     params: mergeObjects(DEFAULT_PARAMS),
   },
+  eventLevel: {
+    shortcut: 'eventLevel',
+    wellknown: 'predefine',
+    bucket: 'eventlevels',
+    params: mergeObjects(DEFAULT_PARAMS),
+  },
+  eventSeverity: {
+    shortcut: 'eventSeverity',
+    wellknown: 'predefine',
+    bucket: 'eventseverities',
+    params: mergeObjects(DEFAULT_PARAMS),
+  },
   eventCertainty: {
     shortcut: 'eventCertainty',
     wellknown: 'predefine',
     bucket: 'eventcertainties',
+    params: mergeObjects(DEFAULT_PARAMS),
+  },
+  eventStatus: {
+    shortcut: 'eventStatus',
+    wellknown: 'predefine',
+    bucket: 'eventstatuses',
+    params: mergeObjects(DEFAULT_PARAMS),
+  },
+  eventUrgency: {
+    shortcut: 'eventUrgency',
+    wellknown: 'predefine',
+    bucket: 'eventurgencies',
+    params: mergeObjects(DEFAULT_PARAMS),
+  },
+  eventResponse: {
+    shortcut: 'eventResponse',
+    wellknown: 'predefine',
+    bucket: 'eventresponses',
     params: mergeObjects(DEFAULT_PARAMS),
   },
   eventAction: {
@@ -185,28 +215,10 @@ const PREDEFINE_SHORTCUTS = {
     bucket: 'eventindicators',
     params: mergeObjects(DEFAULT_PARAMS),
   },
-  eventLevel: {
-    shortcut: 'eventLevel',
-    wellknown: 'predefine',
-    bucket: 'eventlevels',
-    params: mergeObjects(DEFAULT_PARAMS),
-  },
   eventQuestion: {
     shortcut: 'eventQuestion',
     wellknown: 'predefine',
     bucket: 'eventquestions',
-    params: mergeObjects(DEFAULT_PARAMS),
-  },
-  eventSeverity: {
-    shortcut: 'eventSeverity',
-    wellknown: 'predefine',
-    bucket: 'eventseverities',
-    params: mergeObjects(DEFAULT_PARAMS),
-  },
-  eventStatus: {
-    shortcut: 'eventStatus',
-    wellknown: 'predefine',
-    bucket: 'eventstatuses',
     params: mergeObjects(DEFAULT_PARAMS),
   },
   eventTopic: {
@@ -225,12 +237,6 @@ const PREDEFINE_SHORTCUTS = {
     shortcut: 'eventActionCatalogue',
     wellknown: 'predefine',
     bucket: 'eventactioncatalogues',
-    params: mergeObjects(DEFAULT_PARAMS),
-  },
-  eventUrgency: {
-    shortcut: 'eventUrgency',
-    wellknown: 'predefine',
-    bucket: 'eventurgencies',
     params: mergeObjects(DEFAULT_PARAMS),
   },
   featureType: {
