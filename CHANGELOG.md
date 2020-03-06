@@ -1,3 +1,15 @@
+#### 0.12.0 (2020-03-06)
+
+##### New Features
+
+- expose event responses endpoint helpers ([f5570be3](https://github.com/CodeTanzania/ewea-api-client/commit/f5570be3c2aa4b3f9078800ae2ffaa7691dce4d0))
+
+##### Bug Fixes
+
+- **deps:**
+  - update dependency @lykmapipo/env to >=0.16.9 ([9fc6d098](https://github.com/CodeTanzania/ewea-api-client/commit/9fc6d098b96cf26ab4e118ab50936607419c9050))
+  - update dependency @lykmapipo/common to >=0.30.7 ([5bf23d5c](https://github.com/CodeTanzania/ewea-api-client/commit/5bf23d5c26d809578d0e61f4a10a94e6ccf17fb6))
+
 #### 0.11.2 (2020-03-02)
 
 ##### New Features
