@@ -23,7 +23,7 @@ import {
 // default http client
 let client;
 let jwtToken;
-let party = null; // current signined party
+let party = null; // current sign in party
 
 // client base url
 let BASE_URL;
@@ -416,7 +416,7 @@ export const all = (...promises) => axios.all([...promises]);
 /**
  * @function spread
  * @name spread
- * @description Flattened array fullfillment to the formal parameters of the
+ * @description Flattened array fulfillment to the formal parameters of the
  * fulfillment handler.
  * @since 0.2.0
  * @version 0.1.0
@@ -615,13 +615,13 @@ export const normalizeResource = resource => {
     ? { wellknown: resource }
     : mergeObjects(resource);
 
-  // rormalize wellknown
+  // normalize wellknown
   const { wellknown } = definition;
   let singular = singularize(wellknown);
   let plural = pluralize(wellknown);
   definition.wellknown = { singular, plural };
 
-  // rormalize shortcut
+  // normalize shortcut
   const { shortcut } = definition;
   singular = singularize(shortcut || wellknown);
   plural = pluralize(shortcut || wellknown);
