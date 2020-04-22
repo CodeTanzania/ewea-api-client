@@ -252,7 +252,7 @@ export const SHORTCUTS = mergeObjects(
 export const RESOURCES = mergeObjects(SHORTCUTS);
 
 // build wellknown resources
-forEach([...WELL_KNOWN], wellknown => {
+forEach([...WELL_KNOWN], (wellknown) => {
   const name = clone(wellknown);
   const shortcut = clone(wellknown);
   const params = mergeObjects(DEFAULT_PARAMS);
@@ -271,11 +271,11 @@ forEach([...WELL_KNOWN], wellknown => {
  */
 export const httpActions = {
   getSchemas: () =>
-    get('/schemas').then(response => {
+    get('/schemas').then((response) => {
       const schemas = { ...response };
       // expose shortcuts schema
       if (schemas) {
-        forEach(SHORTCUTS, shortcut => {
+        forEach(SHORTCUTS, (shortcut) => {
           const key = upperFirst(shortcut.shortcut);
           const wellknown = upperFirst(shortcut.wellknown);
           schemas[key] = schemas[wellknown];
@@ -286,7 +286,7 @@ export const httpActions = {
 };
 
 // build resource http actions
-forEach(RESOURCES, resource => {
+forEach(RESOURCES, (resource) => {
   const resourceHttpActions = createHttpActionsFor(resource);
   merge(httpActions, resourceHttpActions);
 });

@@ -9,7 +9,7 @@ import {
   SHORTCUTS,
 } from '../src/index';
 
-describe('emis api client', () => {
+describe('ewea api client', () => {
   it('should expose default api endpoint filter options', () => {
     expect(DEFAULT_FILTER).to.exist;
     expect(DEFAULT_FILTER).to.be.an('object');
@@ -49,7 +49,7 @@ describe('emis api client', () => {
   it('should expose wellknown resource builder options', () => {
     expect(RESOURCES).to.exist;
     expect(RESOURCES).to.be.an('object');
-    forEach(WELL_KNOWN, wellknown => {
+    forEach(WELL_KNOWN, (wellknown) => {
       expect(RESOURCES).to.have.property(wellknown);
     });
   });
@@ -58,7 +58,7 @@ describe('emis api client', () => {
     expect(SHORTCUTS).to.exist;
     expect(SHORTCUTS).to.be.an('object');
     expect(keys(SHORTCUTS)).to.contain('focalPerson', 'agency');
-    forEach(keys(SHORTCUTS), shortcut => {
+    forEach(keys(SHORTCUTS), (shortcut) => {
       expect(RESOURCES).to.have.property(shortcut);
     });
   });

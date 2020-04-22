@@ -106,7 +106,7 @@ export const isTokenValid = () => {
  * @version 0.1.0
  * @private
  */
-const mapResponseToError = exception => {
+const mapResponseToError = (exception) => {
   // obtain error details
   let { code, status, message, description, stack, errors, data } = exception;
   const { request, response } = exception;
@@ -147,7 +147,7 @@ const mapResponseToError = exception => {
  * @version 0.1.0
  * @private
  */
-const mapResponseToData = response => response.data;
+const mapResponseToData = (response) => response.data;
 
 /**
  * @function wrapRequest
@@ -159,7 +159,7 @@ const mapResponseToData = response => response.data;
  * @version 0.1.0
  * @private
  */
-const wrapRequest = request => {
+const wrapRequest = (request) => {
   return request.then(mapResponseToData).catch(mapResponseToError);
 };
 
@@ -191,26 +191,20 @@ const mapIn = (...values) => {
  * @version 0.1.0
  * @private
  */
-const mapBetween = between => {
+const mapBetween = (between) => {
   const isBetween = between && (between.from || between.to);
   if (isBetween) {
     const { to: upper, from: lower } = mergeObjects(between);
     // <= to
     if (upper && !lower) {
       return {
-        $lte: moment(upper)
-          .utc()
-          .endOf('date')
-          .toDate(),
+        $lte: moment(upper).utc().endOf('date').toDate(),
       };
     }
     // >= from
     if (!upper && lower) {
       return {
-        $gte: moment(lower)
-          .utc()
-          .startOf('date')
-          .toDate(),
+        $gte: moment(lower).utc().startOf('date').toDate(),
       };
     }
     // >= from && <= to
@@ -242,7 +236,7 @@ const mapBetween = between => {
  * @version 0.1.0
  * @private
  */
-const mapRange = range => {
+const mapRange = (range) => {
   const isRange = (range && range.min) || range.max;
   if (isRange) {
     const { max: upper, min: lower } = mergeObjects(range);
@@ -316,7 +310,7 @@ export const getHeaders = () => {
  * filters = prepareFilter(filters);
  * // => { filter: { age: { $gte: 14, $lte: 4 } } }
  */
-export const prepareParams = params => {
+export const prepareParams = (params) => {
   // default params
   const defaults = { sort: { updatedAt: -1 } };
   // clone params
@@ -360,7 +354,7 @@ export const prepareParams = params => {
  * import { createHttpClient } from 'ewea-api-client';
  * const httpClient = createHttpClient();
  */
-export const createHttpClient = API_BASE_URL => {
+export const createHttpClient = (API_BASE_URL) => {
   if (!client) {
     const EWEA_API_URL = getString('EWEA_API_URL');
     const REACT_APP_EWEA_API_URL = getString('REACT_APP_EWEA_API_URL');
@@ -538,7 +532,7 @@ export const patch = (url, data) => {
  * const deleteUser = del('/users/5c1766243c9d520004e2b542');
  * deleteUser.then(user => { ... }).catch(error => { ... });
  */
-export const del = url => {
+export const del = (url) => {
   const httpClient = createHttpClient();
   return wrapRequest(httpClient.delete(url, { headers: getHeaders() }));
 };
@@ -558,13 +552,13 @@ export const del = url => {
  *
  * signin({ email:'', password:'' }).then(results => {});
  */
-export const signin = credentials => {
+export const signin = (credentials) => {
   const defaultCredentials = { email: '', password: '' };
   const payload = isEmpty(credentials)
     ? defaultCredentials
     : merge(defaultCredentials, credentials);
 
-  return post('/signin', payload).then(results => {
+  return post('/signin', payload).then((results) => {
     if (isBrowser) {
       // persist token and party in session storage
       sessionStorage.setItem('token', results.token); // eslint-disable-line
@@ -609,7 +603,7 @@ export const signout = () => {
  * @static
  * @public
  */
-export const normalizeResource = resource => {
+export const normalizeResource = (resource) => {
   // normalize & get copy
   const definition = isString(resource)
     ? { wellknown: resource }
@@ -646,7 +640,7 @@ export const normalizeResource = resource => {
  * const getUserSchema = createGetSchemaHttpAction(resource);
  * getUserSchema().then(schema => { ... }).catch(error => { ... });
  */
-export const createGetSchemaHttpAction = resource => {
+export const createGetSchemaHttpAction = (resource) => {
   // ensure resource
   const {
     shortcut: { singular },
@@ -689,7 +683,7 @@ export const createGetSchemaHttpAction = resource => {
  * const getUsersExportUrl = createExportUrlHttpAction(resource);
  * getUsersExportUrl(); //=> /users/export
  */
-export const createExportUrlHttpAction = resource => {
+export const createExportUrlHttpAction = (resource) => {
   // ensure resource
   const { shortcut, wellknown, bucket } = normalizeResource(resource);
 
@@ -698,7 +692,7 @@ export const createExportUrlHttpAction = resource => {
 
   // build action
   const action = {
-    [methodName]: options => {
+    [methodName]: (options) => {
       // prepare params
       const params = prepareParams(mergeObjects(resource.params, options));
       // derive endpoint
@@ -731,7 +725,7 @@ export const createExportUrlHttpAction = resource => {
  * const getUsers = createGetListHttpAction(resource);
  * getUsers().then(users => { ... }).catch(error => { ... });
  */
-export const createGetListHttpAction = resource => {
+export const createGetListHttpAction = (resource) => {
   // ensure resource
   const { shortcut, wellknown, bucket } = normalizeResource(resource);
 
@@ -740,7 +734,7 @@ export const createGetListHttpAction = resource => {
 
   // build action
   const action = {
-    [methodName]: options => {
+    [methodName]: (options) => {
       // prepare params
       const params = mergeObjects(resource.params, options);
       // derive endpoint
@@ -772,7 +766,7 @@ export const createGetListHttpAction = resource => {
  * const getUser = createGetSingleHttpAction(resource);
  * getUser('5c176624').then(user => { ... }).catch(error => { ... });
  */
-export const createGetSingleHttpAction = resource => {
+export const createGetSingleHttpAction = (resource) => {
   // ensure resource
   const {
     shortcut: { singular },
@@ -785,7 +779,7 @@ export const createGetSingleHttpAction = resource => {
 
   // build action
   const action = {
-    [methodName]: id => {
+    [methodName]: (id) => {
       // prepare params
       const params = mergeObjects(resource.params);
       // derive endpoint
@@ -817,7 +811,7 @@ export const createGetSingleHttpAction = resource => {
  * const postUser = createPostHttpAction(resource);
  * postUser({ name: ... }).then(user => { ... }).catch(error => { ... });
  */
-export const createPostHttpAction = resource => {
+export const createPostHttpAction = (resource) => {
   // ensure resource
   const {
     shortcut: { singular },
@@ -830,7 +824,7 @@ export const createPostHttpAction = resource => {
 
   // build action
   const action = {
-    [methodName]: payload => {
+    [methodName]: (payload) => {
       // prepare data
       const defaults = omit((resource.params || {}).filter, 'deletedAt');
       const data =
@@ -864,7 +858,7 @@ export const createPostHttpAction = resource => {
  * const putUser = createPutHttpAction(resource);
  * putUser({ _id: ..., name: ...}).then(user => { ... }).catch(error => { ... });
  */
-export const createPutHttpAction = resource => {
+export const createPutHttpAction = (resource) => {
   // ensure resource
   const {
     shortcut: { singular },
@@ -877,7 +871,7 @@ export const createPutHttpAction = resource => {
 
   // build action
   const action = {
-    [methodName]: payload => {
+    [methodName]: (payload) => {
       // prepare data
       const defaults = omit((resource.params || {}).filter, 'deletedAt');
       const data =
@@ -911,7 +905,7 @@ export const createPutHttpAction = resource => {
  * const patchUser = createPatchHttpAction(resource);
  * patchUser({ _id: ..., name: ...}).then(user => { ... }).catch(error => { ... });
  */
-export const createPatchHttpAction = resource => {
+export const createPatchHttpAction = (resource) => {
   // ensure resource
   const {
     shortcut: { singular },
@@ -924,7 +918,7 @@ export const createPatchHttpAction = resource => {
 
   // build action
   const action = {
-    [methodName]: payload => {
+    [methodName]: (payload) => {
       // prepare data
       const defaults = omit((resource.params || {}).filter, 'deletedAt');
       const data =
@@ -958,7 +952,7 @@ export const createPatchHttpAction = resource => {
  * const deleteUser = createDeleteHttpAction(resource);
  * deleteUser('5c176624').then(user => { ... }).catch(error => { ... });
  */
-export const createDeleteHttpAction = resource => {
+export const createDeleteHttpAction = (resource) => {
   // ensure resource
   const {
     shortcut: { singular },
@@ -971,7 +965,7 @@ export const createDeleteHttpAction = resource => {
 
   // build action
   const action = {
-    [methodName]: id => {
+    [methodName]: (id) => {
       // derive endpoint
       let endpoint = `/${toLower(plural)}/${id}`;
       if (!isEmpty(bucket)) {
@@ -1000,7 +994,7 @@ export const createDeleteHttpAction = resource => {
  * const { deleteUser } = createHttpActionsFor('user');
  * deleteUser('5c176624').then(user => { ... }).catch(error => { ... });
  */
-export const createHttpActionsFor = resource => {
+export const createHttpActionsFor = (resource) => {
   // compose resource http actions
   const getSchema = createGetSchemaHttpAction(resource);
   const getExportUrl = createExportUrlHttpAction(resource);

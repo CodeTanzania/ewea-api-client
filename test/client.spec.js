@@ -98,14 +98,8 @@ describe('http client', () => {
     const start = new Date('2019-01-01');
     const end = new Date('2019-01-03');
     const expected = {
-      $gte: moment(start)
-        .utc()
-        .startOf('date')
-        .toDate(),
-      $lte: moment(end)
-        .utc()
-        .endOf('date')
-        .toDate(),
+      $gte: moment(start).utc().startOf('date').toDate(),
+      $lte: moment(end).utc().endOf('date').toDate(),
     };
 
     let filter = { createdAt: { from: start, to: end } };
@@ -290,28 +284,25 @@ describe('http client', () => {
     expect(del.length).to.be.equal(1);
   });
 
-  it('should handle http get on /resource', done => {
+  it('should handle http get on /resource', (done) => {
     const baseUrl = 'https://api.emis.io/v1';
     process.env.EWEA_API_URL = baseUrl;
     const data = { data: [] };
-    nock(baseUrl)
-      .get('/users')
-      .query(true)
-      .reply(200, data);
+    nock(baseUrl).get('/users').query(true).reply(200, data);
 
     get('/users')
-      .then(response => {
+      .then((response) => {
         expect(response).to.exist;
         expect(response.data).to.exist;
         expect(response).to.be.eql(data);
         done(null, data);
       })
-      .catch(error => {
+      .catch((error) => {
         done(error);
       });
   });
 
-  it('should handle http get on /resource/:id', done => {
+  it('should handle http get on /resource/:id', (done) => {
     const baseUrl = 'https://api.emis.io/v1';
     process.env.EWEA_API_URL = baseUrl;
     const data = {};
@@ -321,55 +312,49 @@ describe('http client', () => {
       .reply(200, data);
 
     get('/users/5c1766243c9d520004e2b542')
-      .then(response => {
+      .then((response) => {
         expect(response).to.exist;
         expect(response).to.exist;
         expect(response).to.be.eql(data);
         done(null, data);
       })
-      .catch(error => {
+      .catch((error) => {
         done(error);
       });
   });
 
-  it('should handle http post on /resource', done => {
+  it('should handle http post on /resource', (done) => {
     const baseUrl = 'https://api.emis.io/v1';
     process.env.EWEA_API_URL = baseUrl;
     const data = {};
-    nock(baseUrl)
-      .post('/users')
-      .query(true)
-      .reply(201, data);
+    nock(baseUrl).post('/users').query(true).reply(201, data);
 
     post('/users', { age: 11 })
-      .then(response => {
+      .then((response) => {
         expect(response).to.exist;
         expect(response).to.exist;
         expect(response).to.be.eql(data);
         done(null, data);
       })
-      .catch(error => {
+      .catch((error) => {
         done(error);
       });
   });
 
-  it('should reject http post on /resource if no payload', done => {
+  it('should reject http post on /resource if no payload', (done) => {
     const baseUrl = 'https://api.emis.io/v1';
     process.env.EWEA_API_URL = baseUrl;
     const data = {};
-    nock(baseUrl)
-      .post('/users')
-      .query(true)
-      .reply(201, data);
+    nock(baseUrl).post('/users').query(true).reply(201, data);
 
-    post('/users', {}).catch(error => {
+    post('/users', {}).catch((error) => {
       expect(error).to.exist;
       expect(error.message).to.be.equal('Missing Payload');
       done();
     });
   });
 
-  it('should handle http put on /resource/:id', done => {
+  it('should handle http put on /resource/:id', (done) => {
     const baseUrl = 'https://api.emis.io/v1';
     process.env.EWEA_API_URL = baseUrl;
     const data = {};
@@ -379,18 +364,18 @@ describe('http client', () => {
       .reply(200, data);
 
     put('/users/5c1766243c9d520004e2b542', { age: 11 })
-      .then(response => {
+      .then((response) => {
         expect(response).to.exist;
         expect(response).to.exist;
         expect(response).to.be.eql(data);
         done(null, data);
       })
-      .catch(error => {
+      .catch((error) => {
         done(error);
       });
   });
 
-  it('should reject http put on /resource/:id if no payload', done => {
+  it('should reject http put on /resource/:id if no payload', (done) => {
     const baseUrl = 'https://api.emis.io/v1';
     process.env.EWEA_API_URL = baseUrl;
     const data = {};
@@ -399,14 +384,14 @@ describe('http client', () => {
       .query(true)
       .reply(200, data);
 
-    put('/users/5c1766243c9d520004e2b542', {}).catch(error => {
+    put('/users/5c1766243c9d520004e2b542', {}).catch((error) => {
       expect(error).to.exist;
       expect(error.message).to.be.equal('Missing Payload');
       done();
     });
   });
 
-  it('should handle http patch on /resource/:id', done => {
+  it('should handle http patch on /resource/:id', (done) => {
     const baseUrl = 'https://api.emis.io/v1';
     process.env.EWEA_API_URL = baseUrl;
     const data = {};
@@ -416,18 +401,18 @@ describe('http client', () => {
       .reply(200, data);
 
     patch('/users/5c1766243c9d520004e2b542', { age: 11 })
-      .then(response => {
+      .then((response) => {
         expect(response).to.exist;
         expect(response).to.exist;
         expect(response).to.be.eql(data);
         done(null, data);
       })
-      .catch(error => {
+      .catch((error) => {
         done(error);
       });
   });
 
-  it('should reject http patch on /resource/:id if no payload', done => {
+  it('should reject http patch on /resource/:id if no payload', (done) => {
     const baseUrl = 'https://api.emis.io/v1';
     process.env.EWEA_API_URL = baseUrl;
     const data = {};
@@ -436,14 +421,14 @@ describe('http client', () => {
       .query(true)
       .reply(200, data);
 
-    patch('/users/5c1766243c9d520004e2b542', {}).catch(error => {
+    patch('/users/5c1766243c9d520004e2b542', {}).catch((error) => {
       expect(error).to.exist;
       expect(error.message).to.be.equal('Missing Payload');
       done();
     });
   });
 
-  it('should handle http delete on /resource/:id', done => {
+  it('should handle http delete on /resource/:id', (done) => {
     const baseUrl = 'https://api.emis.io/v1';
     process.env.EWEA_API_URL = baseUrl;
     const data = {};
@@ -453,29 +438,29 @@ describe('http client', () => {
       .reply(200, data);
 
     del('/users/5c1766243c9d520004e2b542')
-      .then(response => {
+      .then((response) => {
         expect(response).to.exist;
         expect(response).to.exist;
         expect(response).to.be.eql(data);
         done(null, data);
       })
-      .catch(error => {
+      .catch((error) => {
         done(error);
       });
   });
 
-  it('should handle failed request error', done => {
+  it('should handle failed request error', (done) => {
     const baseUrl = 'https://api.emis.io/v1';
     process.env.EWEA_API_URL = baseUrl;
 
-    get('/users').catch(error => {
+    get('/users').catch((error) => {
       expect(error).to.exist;
       expect(error.code).to.be.equal('ENOTFOUND');
       done();
     });
   });
 
-  it('should handle http response error', done => {
+  it('should handle http response error', (done) => {
     const baseUrl = 'https://api.emis.io/v1';
     process.env.EWEA_API_URL = baseUrl;
     const data = {
@@ -486,12 +471,9 @@ describe('http client', () => {
       description: 'Bad Request',
       errors: {},
     };
-    nock(baseUrl)
-      .get('/users')
-      .query(true)
-      .reply(400, data);
+    nock(baseUrl).get('/users').query(true).reply(400, data);
 
-    get('/users').catch(error => {
+    get('/users').catch((error) => {
       expect(error).to.exist;
       expect(error.status).to.be.equal(data.status);
       expect(error.code).to.be.equal(data.code);
@@ -563,22 +545,19 @@ describe('http client', () => {
     expect(getQuestionnaireSchema).to.exist;
   });
 
-  it('should handle http get on /resource use generated actions', done => {
+  it('should handle http get on /resource use generated actions', (done) => {
     const baseUrl = 'https://api.emis.io/v1';
     process.env.EWEA_API_URL = baseUrl;
     const data = { data: [] };
-    nock(baseUrl)
-      .get('/events')
-      .query(true)
-      .reply(200, data);
+    nock(baseUrl).get('/events').query(true).reply(200, data);
 
     getEvents()
-      .then(events => {
+      .then((events) => {
         expect(events).to.exist;
         expect(events).to.be.eql(data);
         done(null, data);
       })
-      .catch(error => {
+      .catch((error) => {
         done(error);
       });
   });
@@ -590,7 +569,7 @@ describe('http client', () => {
     expect(url).to.be.contain(`${baseUrl}/events/export`);
   });
 
-  it('should handle http get on /resource/:id use generated actions', done => {
+  it('should handle http get on /resource/:id use generated actions', (done) => {
     const baseUrl = 'https://api.emis.io/v1';
     process.env.EWEA_API_URL = baseUrl;
     const data = {};
@@ -600,37 +579,34 @@ describe('http client', () => {
       .reply(200, data);
 
     getEvent('5c1766243c9d520004e2b542')
-      .then(event => {
+      .then((event) => {
         expect(event).to.exist;
         expect(event).to.be.eql(data);
         done(null, data);
       })
-      .catch(error => {
+      .catch((error) => {
         done(error);
       });
   });
 
-  it('should handle http post on /resource use generated actions', done => {
+  it('should handle http post on /resource use generated actions', (done) => {
     const baseUrl = 'https://api.emis.io/v1';
     process.env.EWEA_API_URL = baseUrl;
     const data = {};
-    nock(baseUrl)
-      .post('/events')
-      .query(true)
-      .reply(201, data);
+    nock(baseUrl).post('/events').query(true).reply(201, data);
 
     postEvent({ description: 'Voluptas' })
-      .then(event => {
+      .then((event) => {
         expect(event).to.exist;
         expect(event).to.be.eql(data);
         done(null, data);
       })
-      .catch(error => {
+      .catch((error) => {
         done(error);
       });
   });
 
-  it('should handle http put on /resource/:id use generated actions', done => {
+  it('should handle http put on /resource/:id use generated actions', (done) => {
     const baseUrl = 'https://api.emis.io/v1';
     process.env.EWEA_API_URL = baseUrl;
     const data = {};
@@ -640,17 +616,17 @@ describe('http client', () => {
       .reply(200, data);
 
     putEvent({ _id: '5c1766243c9d520004e2b542', description: 'Voluptas' })
-      .then(event => {
+      .then((event) => {
         expect(event).to.exist;
         expect(event).to.be.eql(data);
         done(null, data);
       })
-      .catch(error => {
+      .catch((error) => {
         done(error);
       });
   });
 
-  it('should handle http patch on /resource/:id use generated actions', done => {
+  it('should handle http patch on /resource/:id use generated actions', (done) => {
     const baseUrl = 'https://api.emis.io/v1';
     process.env.EWEA_API_URL = baseUrl;
     const data = {};
@@ -660,17 +636,17 @@ describe('http client', () => {
       .reply(200, data);
 
     patchEvent({ _id: '5c1766243c9d520004e2b542', description: 'Voluptas' })
-      .then(event => {
+      .then((event) => {
         expect(event).to.exist;
         expect(event).to.be.eql(data);
         done(null, data);
       })
-      .catch(error => {
+      .catch((error) => {
         done(error);
       });
   });
 
-  it('should handle http delete on /resource/:id use generated actions', done => {
+  it('should handle http delete on /resource/:id use generated actions', (done) => {
     const baseUrl = 'https://api.emis.io/v1';
     process.env.EWEA_API_URL = baseUrl;
     const data = {};
@@ -680,28 +656,22 @@ describe('http client', () => {
       .reply(200, data);
 
     deleteEvent('5c1766243c9d520004e2b542')
-      .then(event => {
+      .then((event) => {
         expect(event).to.exist;
         expect(event).to.be.eql(data);
         done(null, data);
       })
-      .catch(error => {
+      .catch((error) => {
         done(error);
       });
   });
 
-  it('should be able to issue request in parallel', done => {
+  it('should be able to issue request in parallel', (done) => {
     const baseUrl = 'https://api.emis.io/v1';
     process.env.EWEA_API_URL = baseUrl;
     const data = [{}];
-    nock(baseUrl)
-      .get('/parties/schema')
-      .query(true)
-      .reply(200, data);
-    nock(baseUrl)
-      .get('/events/schema')
-      .query(true)
-      .reply(200, data);
+    nock(baseUrl).get('/parties/schema').query(true).reply(200, data);
+    nock(baseUrl).get('/events/schema').query(true).reply(200, data);
 
     all(getPartySchema(), getEventSchema())
       .then(
@@ -713,34 +683,31 @@ describe('http client', () => {
           done();
         })
       )
-      .catch(error => {
+      .catch((error) => {
         done(error);
       });
   });
 
-  it('should handle http get on /schemas', done => {
+  it('should handle http get on /schemas', (done) => {
     const baseUrl = 'https://api.emis.io/v1';
     process.env.EWEA_API_URL = baseUrl;
     const data = { Event: {}, Predefine: {} };
-    nock(baseUrl)
-      .get('/schemas')
-      .query(true)
-      .reply(200, data);
+    nock(baseUrl).get('/schemas').query(true).reply(200, data);
 
     getSchemas()
-      .then(schemas => {
+      .then((schemas) => {
         expect(schemas).to.exist;
         expect(schemas).to.be.an('object');
         expect(schemas.Event).to.exist;
         expect(schemas.Feature).to.exist;
         done(null, data);
       })
-      .catch(error => {
+      .catch((error) => {
         done(error);
       });
   });
 
-  it('should handle http post on /signin', done => {
+  it('should handle http post on /signin', (done) => {
     const baseUrl = 'https://api.emis.io/v1';
     process.env.EWEA_API_URL = baseUrl;
     const data = {
@@ -753,19 +720,16 @@ describe('http client', () => {
       },
       token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9',
     };
-    nock(baseUrl)
-      .post('/signin')
-      .query(true)
-      .reply(200, data);
+    nock(baseUrl).post('/signin').query(true).reply(200, data);
 
     signin({ email: '', password: '' })
-      .then(response => {
+      .then((response) => {
         expect(response).to.exist;
         expect(response).to.exist;
         expect(response).to.be.eql(data);
         done(null, data);
       })
-      .catch(error => {
+      .catch((error) => {
         done(error);
       });
   });
