@@ -36,7 +36,7 @@ const isBrowser =
  * @name getJwtToken
  * @description retrieve jwt token from session storage if not set
  * @return {string| undefined} jwt token
- * @since 0.14.0
+ * @since 0.1.0
  * @version 0.1.1
  */
 export const getJwtToken = () => {
@@ -68,7 +68,7 @@ export const getAuthenticatedParty = () => {
  * @name isTokenValid
  * @description check if jwt token from is valid or not
  * @returns {boolean} check if token is valid or not
- * @since 0.14.0
+ * @since 0.1.0
  * @version 0.2.0
  * @example
  * import { isTokenValid } from 'ewea-api-client';
@@ -543,7 +543,7 @@ export const del = (url) => {
  * @description signIn user with provided credentials
  * @param {object} credentials Username and password
  * @returns {object} Object having party, permission and other meta data
- * @since 0.14.0
+ * @since 0.1.0
  * @version 0.3.0
  * @static
  * @public
@@ -575,7 +575,7 @@ export const signIn = (credentials) => {
  * @function signOut
  * @name signOut
  * @description signOut current signed In user and clear session Storage
- * @since 0.14.0
+ * @since 0.1.0
  * @version 0.3.0
  * @static
  * @public
