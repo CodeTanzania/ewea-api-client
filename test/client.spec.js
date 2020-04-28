@@ -13,7 +13,7 @@ import {
   put,
   patch,
   del,
-  signin,
+  signIn,
   normalizeResource,
   createGetSchemaHttpAction,
   createGetListHttpAction,
@@ -774,7 +774,7 @@ describe('http client', () => {
     };
     nock(baseUrl).post('/signin').query(true).reply(200, data);
 
-    signin({ email: '', password: '' })
+    signIn({ email: '', password: '' })
       .then((response) => {
         expect(response).to.exist;
         expect(response).to.exist;

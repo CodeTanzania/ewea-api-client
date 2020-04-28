@@ -538,21 +538,21 @@ export const del = (url) => {
 };
 
 /**
- * @function singin
- * @name signin
- * @description Signin user with provided credentials
+ * @function signIn
+ * @name signIn
+ * @description signIn user with provided credentials
  * @param {object} credentials Username and password
  * @returns {object} Object having party, permission and other meta data
  * @since 0.14.0
- * @version 0.2.0
+ * @version 0.3.0
  * @static
  * @public
  * @example
- * import { signin } from 'ewea-api-client';
+ * import { signIn } from 'ewea-api-client';
  *
- * signin({ email:'', password:'' }).then(results => {});
+ * signIn({ email:'', password:'' }).then(results => {});
  */
-export const signin = (credentials) => {
+export const signIn = (credentials) => {
   const defaultCredentials = { email: '', password: '' };
   const payload = isEmpty(credentials)
     ? defaultCredentials
@@ -572,19 +572,19 @@ export const signin = (credentials) => {
 };
 
 /**
- * @function signout
- * @name signout
- * @description Signout current signin user and clear session Storage
+ * @function signOut
+ * @name signOut
+ * @description signOut current signed In user and clear session Storage
  * @since 0.14.0
- * @version 0.2.0
+ * @version 0.3.0
  * @static
  * @public
  * @example
- * import { signout } from 'ewea-api-client';
+ * import { signOut } from 'ewea-api-client';
  *
- * signout();
+ * signOut();
  */
-export const signout = () => {
+export const signOut = () => {
   jwtToken = undefined; // reset instance jwt token
 
   if (isBrowser) {
