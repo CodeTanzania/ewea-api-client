@@ -24,6 +24,7 @@ import {
   createDeleteHttpAction,
   createHttpActionsFor,
   httpActions,
+  createGetHttpActionForReport,
 } from '../src/index';
 
 const {
@@ -44,6 +45,17 @@ const {
   putEvent,
   patchEvent,
   deleteEvent,
+  getOverviewsReport,
+  getIndicatorsReport,
+  getRisksReport,
+  getActionsReport,
+  getNeedsReport,
+  getEffectsReport,
+  getAlertsReport,
+  getResourcesReport,
+  getEventsReport,
+  getDispatchesReport,
+  getCasesReport,
 } = httpActions;
 
 describe('http client', () => {
@@ -166,6 +178,15 @@ describe('http client', () => {
     expect(getUser).to.be.a('function');
     expect(getUser.name).to.be.equal('getUser');
     expect(getUser.length).to.be.equal(1);
+  });
+
+  it('should create get http action for report', () => {
+    const report = 'party';
+    const { getPartiesReport } = createGetHttpActionForReport(report);
+    expect(getPartiesReport).to.exist;
+    expect(getPartiesReport).to.be.a('function');
+    expect(getPartiesReport.name).to.be.equal('getPartiesReport');
+    expect(getPartiesReport.length).to.be.equal(1);
   });
 
   it('should create post resource http action', () => {
@@ -545,6 +566,20 @@ describe('http client', () => {
     expect(getQuestionnaireSchema).to.exist;
   });
 
+  it('should export EWEA reports http action', () => {
+    expect(getOverviewsReport).to.exist;
+    expect(getIndicatorsReport).to.exist;
+    expect(getNeedsReport).to.exist;
+    expect(getEffectsReport).to.exist;
+    expect(getAlertsReport).to.exist;
+    expect(getCasesReport).to.exist;
+    expect(getDispatchesReport).to.exist;
+    expect(getResourcesReport).to.exist;
+    expect(getEventsReport).to.exist;
+    expect(getRisksReport).to.exist;
+    expect(getActionsReport).to.exist;
+  });
+
   it('should handle http get on /resource use generated actions', (done) => {
     const baseUrl = 'https://api.emis.io/v1';
     process.env.EWEA_API_URL = baseUrl;
@@ -567,6 +602,23 @@ describe('http client', () => {
     process.env.EWEA_API_URL = baseUrl;
     const url = getEventsExportUrl();
     expect(url).to.be.contain(`${baseUrl}/events/export`);
+  });
+
+  it('should handle http get on /reports use generated actions', (done) => {
+    const baseUrl = 'https://api.emis.io/v1';
+    process.env.EWEA_API_URL = baseUrl;
+    const data = { overviews: {} };
+    nock(baseUrl).get('/reports/overviews').query(true).reply(200, data);
+
+    getOverviewsReport()
+      .then((report) => {
+        expect(report).to.exist;
+        expect(report).to.be.eql(data);
+        done(null, data);
+      })
+      .catch((error) => {
+        done(error);
+      });
   });
 
   it('should handle http get on /resource/:id use generated actions', (done) => {

@@ -1,6 +1,10 @@
 import { clone, forEach, merge, upperFirst } from 'lodash';
 import { mergeObjects } from '@lykmapipo/common';
-import { get, createHttpActionsFor } from './client';
+import {
+  get,
+  createHttpActionsFor,
+  createGetHttpActionForReport,
+} from './client';
 
 /**
  * @name DEFAULT_FILTER
@@ -58,6 +62,33 @@ export const WELL_KNOWN = [
   'predefine',
   'question',
   'questionnaire',
+];
+
+/**
+ * @constant
+ * @name WELL_KNOWN_REPORTS
+ * @description set of well known api endpoints for reports. they must be
+ *  one-to-one to naked api endpoints exposed by the server and they must
+ * presented in camel-case.
+ * @type {String[]}
+ * @since 0.13.0
+ * @version 0.1.0
+ * @static
+ * @public
+ */
+export const WELL_KNOWN_REPORTS = [
+  'overview',
+  'indicator',
+  'risk',
+  'action',
+  'need',
+  'effect',
+  'resource',
+  'party',
+  'alert',
+  'event',
+  'dispatch',
+  'case',
 ];
 
 // default request params
@@ -240,8 +271,8 @@ export const SHORTCUTS = mergeObjects(
 /**
  * @constant
  * @name RESOURCES
- * @description set of applicable api endpoints including both well-kown and
- * shortcuts. they must presented in camelcase and wellknown key should point
+ * @description set of applicable api endpoints including both well-known and
+ * shortcuts. they must presented in camel-case and wellknown key should point
  * back to {@link WELL_KNOWN}.
  * @type {Object}
  * @since 0.7.0
@@ -289,4 +320,10 @@ export const httpActions = {
 forEach(RESOURCES, (resource) => {
   const resourceHttpActions = createHttpActionsFor(resource);
   merge(httpActions, resourceHttpActions);
+});
+
+// build report http Get Actions
+forEach(WELL_KNOWN_REPORTS, (report) => {
+  const reportHttpAction = createGetHttpActionForReport(report);
+  merge(httpActions, reportHttpAction);
 });

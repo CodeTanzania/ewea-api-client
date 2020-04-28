@@ -752,6 +752,36 @@ export const createGetListHttpAction = (resource) => {
 };
 
 /**
+ * @function createGetHttpActionForReport
+ * @name createGetHttpActionForReport
+ * @description generate http action for exposed report
+ * @param {Object} report valid report name
+ * @return {Object} http action to get report
+ * @since 0.13.0
+ * @version 0.1.0
+ * @example
+ * import { createGetHttpActionForReport } from 'ewea-api-client';
+ *
+ * const report = 'party'
+ * const getPartiesReport = createGetListHttpAction(report);
+ * getPartiesReport().then(data => { ... }).catch(error => { ... });
+ */
+export const createGetHttpActionForReport = (report) => {
+  const plural = pluralize(report);
+  const methodName = variableNameFor('get', plural, 'report');
+
+  const action = {
+    [methodName]: (params) => {
+      const endpoint = `/reports/${toLower(plural)}`;
+
+      return get(endpoint, params);
+    },
+  };
+
+  return action;
+};
+
+/**
  * @function createGetSingleHttpAction
  * @name createGetSingleHttpAction
  * @description generate http action to obtain single resource

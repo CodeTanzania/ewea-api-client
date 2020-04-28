@@ -5,6 +5,7 @@ import {
   DEFAULT_PAGINATION,
   DEFAULT_SORT,
   WELL_KNOWN,
+  WELL_KNOWN_REPORTS,
   RESOURCES,
   SHORTCUTS,
 } from '../src/index';
@@ -43,6 +44,25 @@ describe('ewea api client', () => {
       'predefine',
       'question',
       'questionnaire',
+    ]);
+  });
+
+  it('should expose names of well known reports api endpoints', () => {
+    expect(WELL_KNOWN_REPORTS).to.exist;
+    expect(WELL_KNOWN_REPORTS).to.be.an('array');
+    expect(WELL_KNOWN_REPORTS).to.be.eql([
+      'overview',
+      'indicator',
+      'risk',
+      'action',
+      'need',
+      'effect',
+      'resource',
+      'party',
+      'alert',
+      'event',
+      'dispatch',
+      'case',
     ]);
   });
 
