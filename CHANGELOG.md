@@ -1,3 +1,39 @@
+#### 0.13.0 (2020-04-28)
+
+##### Documentation Changes
+
+- **client:** update jsdoc since attribute ([c87f449e](https://github.com/CodeTanzania/ewea-api-client/commit/c87f449e6708235adf2fbc7a8a73c05fb7f9c4b6))
+
+##### New Features
+
+- **reports:** expose reports http actions ([f04796e2](https://github.com/CodeTanzania/ewea-api-client/commit/f04796e2b58d811ae2b02d9a7e3342aa74fdd2dd))
+
+##### Bug Fixes
+
+- **deps:**
+  - update dependency @lykmapipo/env to >=0.17.0 ([8bce1186](https://github.com/CodeTanzania/ewea-api-client/commit/8bce11869e3837f112dde1d629e46913b6f5a376))
+  - update dependency @lykmapipo/common to >=0.31.0 ([9fcd9266](https://github.com/CodeTanzania/ewea-api-client/commit/9fcd92668b147f5d9039d1a67c335194dd192511))
+  - update dependency @lykmapipo/env to >=0.16.12 ([fa4f1474](https://github.com/CodeTanzania/ewea-api-client/commit/fa4f1474092cc9c74c334c420d91027c6554073c))
+  - update dependency @lykmapipo/common to >=0.30.10 ([f039f760](https://github.com/CodeTanzania/ewea-api-client/commit/f039f760ad025c6e019e365b27358a41f3418b81))
+  - update dependency @lykmapipo/env to >=0.16.11 ([05d4bc2f](https://github.com/CodeTanzania/ewea-api-client/commit/05d4bc2fd64f756ef910e3c5a09d222399d5b5df))
+  - update dependency @lykmapipo/common to >=0.30.9 ([ff87d2e2](https://github.com/CodeTanzania/ewea-api-client/commit/ff87d2e2513dd3821a8eb9add580a3d713b7a4b9))
+  - update dependency @lykmapipo/env to >=0.16.10 ([9264d1a1](https://github.com/CodeTanzania/ewea-api-client/commit/9264d1a11499314e664a1a2d9e1ab7791feac4b0))
+  - update dependency @lykmapipo/common to >=0.30.8 ([e11c0df0](https://github.com/CodeTanzania/ewea-api-client/commit/e11c0df041dc5685c02d0104714040ce94fcea49))
+
+##### Other Changes
+
+- CodeTanzania/ewea-api-client into develop ([5d73edcd](https://github.com/CodeTanzania/ewea-api-client/commit/5d73edcd8c38ba9d1999577dc3d75f6df74a35e9))
+- CodeTanzania/ewea-api-client into develop ([fc00bd52](https://github.com/CodeTanzania/ewea-api-client/commit/fc00bd5242284ca3f453dc33c93af2050081d285))
+- CodeTanzania/ewea-api-client into develop ([3fd5524a](https://github.com/CodeTanzania/ewea-api-client/commit/3fd5524a025cf31ef7a425afbd54306dbff2290c))
+
+##### Refactors
+
+- **auth:** remane signin and signout to use camelcase ([23ee78c3](https://github.com/CodeTanzania/ewea-api-client/commit/23ee78c329b8f6482d43b03188a5f35ac0799d34))
+
+##### Code Style Changes
+
+- **client:** fix typos ([e1970567](https://github.com/CodeTanzania/ewea-api-client/commit/e1970567d572c58c5fa96de36ddf46220b95fe62))
+
 #### 0.12.0 (2020-03-06)
 
 ##### New Features
