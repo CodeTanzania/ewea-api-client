@@ -25,7 +25,7 @@ import {
 // default http client
 let client;
 let jwtToken;
-let party = null; // current signined party
+let party = null; // current sign in party
 
 // client base url
 let BASE_URL;
@@ -38,7 +38,7 @@ const isBrowser =
  * @name getJwtToken
  * @description retrieve jwt token from session storage if not set
  * @return {string| undefined} jwt token
- * @since 0.14.0
+ * @since 0.1.0
  * @version 0.1.1
  */
 const getJwtToken = () => {
@@ -70,7 +70,7 @@ const getAuthenticatedParty = () => {
  * @name isTokenValid
  * @description check if jwt token from is valid or not
  * @returns {boolean} check if token is valid or not
- * @since 0.14.0
+ * @since 0.1.0
  * @version 0.2.0
  * @example
  * import { isTokenValid } from 'ewea-api-client';
@@ -108,7 +108,7 @@ const isTokenValid = () => {
  * @version 0.1.0
  * @private
  */
-const mapResponseToError = exception => {
+const mapResponseToError = (exception) => {
   // obtain error details
   let { code, status, message, description, stack, errors, data } = exception;
   const { request, response } = exception;
@@ -149,7 +149,7 @@ const mapResponseToError = exception => {
  * @version 0.1.0
  * @private
  */
-const mapResponseToData = response => response.data;
+const mapResponseToData = (response) => response.data;
 
 /**
  * @function wrapRequest
@@ -161,7 +161,7 @@ const mapResponseToData = response => response.data;
  * @version 0.1.0
  * @private
  */
-const wrapRequest = request => {
+const wrapRequest = (request) => {
   return request.then(mapResponseToData).catch(mapResponseToError);
 };
 
@@ -193,26 +193,20 @@ const mapIn = (...values) => {
  * @version 0.1.0
  * @private
  */
-const mapBetween = between => {
+const mapBetween = (between) => {
   const isBetween = between && (between.from || between.to);
   if (isBetween) {
     const { to: upper, from: lower } = mergeObjects(between);
     // <= to
     if (upper && !lower) {
       return {
-        $lte: moment(upper)
-          .utc()
-          .endOf('date')
-          .toDate(),
+        $lte: moment(upper).utc().endOf('date').toDate(),
       };
     }
     // >= from
     if (!upper && lower) {
       return {
-        $gte: moment(lower)
-          .utc()
-          .startOf('date')
-          .toDate(),
+        $gte: moment(lower).utc().startOf('date').toDate(),
       };
     }
     // >= from && <= to
@@ -244,7 +238,7 @@ const mapBetween = between => {
  * @version 0.1.0
  * @private
  */
-const mapRange = range => {
+const mapRange = (range) => {
   const isRange = (range && range.min) || range.max;
   if (isRange) {
     const { max: upper, min: lower } = mergeObjects(range);
@@ -318,7 +312,7 @@ const getHeaders = () => {
  * filters = prepareFilter(filters);
  * // => { filter: { age: { $gte: 14, $lte: 4 } } }
  */
-const prepareParams = params => {
+const prepareParams = (params) => {
   // default params
   const defaults = { sort: { updatedAt: -1 } };
   // clone params
@@ -362,7 +356,7 @@ const prepareParams = params => {
  * import { createHttpClient } from 'ewea-api-client';
  * const httpClient = createHttpClient();
  */
-const createHttpClient = API_BASE_URL => {
+const createHttpClient = (API_BASE_URL) => {
   if (!client) {
     const EWEA_API_URL = getString('EWEA_API_URL');
     const REACT_APP_EWEA_API_URL = getString('REACT_APP_EWEA_API_URL');
@@ -418,7 +412,7 @@ const all = (...promises) => axios.all([...promises]);
 /**
  * @function spread
  * @name spread
- * @description Flattened array fullfillment to the formal parameters of the
+ * @description Flattened array fulfillment to the formal parameters of the
  * fulfillment handler.
  * @since 0.2.0
  * @version 0.1.0
@@ -540,33 +534,33 @@ const patch = (url, data) => {
  * const deleteUser = del('/users/5c1766243c9d520004e2b542');
  * deleteUser.then(user => { ... }).catch(error => { ... });
  */
-const del = url => {
+const del = (url) => {
   const httpClient = createHttpClient();
   return wrapRequest(httpClient.delete(url, { headers: getHeaders() }));
 };
 
 /**
- * @function singin
- * @name signin
- * @description Signin user with provided credentials
+ * @function signIn
+ * @name signIn
+ * @description signIn user with provided credentials
  * @param {object} credentials Username and password
  * @returns {object} Object having party, permission and other meta data
- * @since 0.14.0
- * @version 0.2.0
+ * @since 0.1.0
+ * @version 0.3.0
  * @static
  * @public
  * @example
- * import { signin } from 'ewea-api-client';
+ * import { signIn } from 'ewea-api-client';
  *
- * signin({ email:'', password:'' }).then(results => {});
+ * signIn({ email:'', password:'' }).then(results => {});
  */
-const signin = credentials => {
+const signIn = (credentials) => {
   const defaultCredentials = { email: '', password: '' };
   const payload = isEmpty(credentials)
     ? defaultCredentials
     : merge(defaultCredentials, credentials);
 
-  return post('/signin', payload).then(results => {
+  return post('/signin', payload).then((results) => {
     if (isBrowser) {
       // persist token and party in session storage
       sessionStorage.setItem('token', results.token); // eslint-disable-line
@@ -580,19 +574,19 @@ const signin = credentials => {
 };
 
 /**
- * @function signout
- * @name signout
- * @description Signout current signin user and clear session Storage
- * @since 0.14.0
- * @version 0.2.0
+ * @function signOut
+ * @name signOut
+ * @description signOut current signed In user and clear session Storage
+ * @since 0.1.0
+ * @version 0.3.0
  * @static
  * @public
  * @example
- * import { signout } from 'ewea-api-client';
+ * import { signOut } from 'ewea-api-client';
  *
- * signout();
+ * signOut();
  */
-const signout = () => {
+const signOut = () => {
   jwtToken = undefined; // reset instance jwt token
 
   if (isBrowser) {
@@ -611,19 +605,19 @@ const signout = () => {
  * @static
  * @public
  */
-const normalizeResource = resource => {
+const normalizeResource = (resource) => {
   // normalize & get copy
   const definition = isString(resource)
     ? { wellknown: resource }
     : mergeObjects(resource);
 
-  // rormalize wellknown
+  // normalize wellknown
   const { wellknown } = definition;
   let singular = singularize(wellknown);
   let plural = pluralize(wellknown);
   definition.wellknown = { singular, plural };
 
-  // rormalize shortcut
+  // normalize shortcut
   const { shortcut } = definition;
   singular = singularize(shortcut || wellknown);
   plural = pluralize(shortcut || wellknown);
@@ -648,7 +642,7 @@ const normalizeResource = resource => {
  * const getUserSchema = createGetSchemaHttpAction(resource);
  * getUserSchema().then(schema => { ... }).catch(error => { ... });
  */
-const createGetSchemaHttpAction = resource => {
+const createGetSchemaHttpAction = (resource) => {
   // ensure resource
   const {
     shortcut: { singular },
@@ -691,7 +685,7 @@ const createGetSchemaHttpAction = resource => {
  * const getUsersExportUrl = createExportUrlHttpAction(resource);
  * getUsersExportUrl(); //=> /users/export
  */
-const createExportUrlHttpAction = resource => {
+const createExportUrlHttpAction = (resource) => {
   // ensure resource
   const { shortcut, wellknown, bucket } = normalizeResource(resource);
 
@@ -700,7 +694,7 @@ const createExportUrlHttpAction = resource => {
 
   // build action
   const action = {
-    [methodName]: options => {
+    [methodName]: (options) => {
       // prepare params
       const params = prepareParams(mergeObjects(resource.params, options));
       // derive endpoint
@@ -733,7 +727,7 @@ const createExportUrlHttpAction = resource => {
  * const getUsers = createGetListHttpAction(resource);
  * getUsers().then(users => { ... }).catch(error => { ... });
  */
-const createGetListHttpAction = resource => {
+const createGetListHttpAction = (resource) => {
   // ensure resource
   const { shortcut, wellknown, bucket } = normalizeResource(resource);
 
@@ -742,7 +736,7 @@ const createGetListHttpAction = resource => {
 
   // build action
   const action = {
-    [methodName]: options => {
+    [methodName]: (options) => {
       // prepare params
       const params = mergeObjects(resource.params, options);
       // derive endpoint
@@ -756,6 +750,36 @@ const createGetListHttpAction = resource => {
   };
 
   // return get resource list action
+  return action;
+};
+
+/**
+ * @function createGetHttpActionForReport
+ * @name createGetHttpActionForReport
+ * @description generate http action for exposed report
+ * @param {Object} report valid report name
+ * @return {Object} http action to get report
+ * @since 0.13.0
+ * @version 0.1.0
+ * @example
+ * import { createGetHttpActionForReport } from 'ewea-api-client';
+ *
+ * const report = 'party'
+ * const getPartiesReport = createGetListHttpAction(report);
+ * getPartiesReport().then(data => { ... }).catch(error => { ... });
+ */
+const createGetHttpActionForReport = (report) => {
+  const plural = pluralize(report);
+  const methodName = variableNameFor('get', plural, 'report');
+
+  const action = {
+    [methodName]: (params) => {
+      const endpoint = `/reports/${toLower(plural)}`;
+
+      return get(endpoint, params);
+    },
+  };
+
   return action;
 };
 
@@ -774,7 +798,7 @@ const createGetListHttpAction = resource => {
  * const getUser = createGetSingleHttpAction(resource);
  * getUser('5c176624').then(user => { ... }).catch(error => { ... });
  */
-const createGetSingleHttpAction = resource => {
+const createGetSingleHttpAction = (resource) => {
   // ensure resource
   const {
     shortcut: { singular },
@@ -787,7 +811,7 @@ const createGetSingleHttpAction = resource => {
 
   // build action
   const action = {
-    [methodName]: id => {
+    [methodName]: (id) => {
       // prepare params
       const params = mergeObjects(resource.params);
       // derive endpoint
@@ -819,7 +843,7 @@ const createGetSingleHttpAction = resource => {
  * const postUser = createPostHttpAction(resource);
  * postUser({ name: ... }).then(user => { ... }).catch(error => { ... });
  */
-const createPostHttpAction = resource => {
+const createPostHttpAction = (resource) => {
   // ensure resource
   const {
     shortcut: { singular },
@@ -832,7 +856,7 @@ const createPostHttpAction = resource => {
 
   // build action
   const action = {
-    [methodName]: payload => {
+    [methodName]: (payload) => {
       // prepare data
       const defaults = omit((resource.params || {}).filter, 'deletedAt');
       const data =
@@ -866,7 +890,7 @@ const createPostHttpAction = resource => {
  * const putUser = createPutHttpAction(resource);
  * putUser({ _id: ..., name: ...}).then(user => { ... }).catch(error => { ... });
  */
-const createPutHttpAction = resource => {
+const createPutHttpAction = (resource) => {
   // ensure resource
   const {
     shortcut: { singular },
@@ -879,7 +903,7 @@ const createPutHttpAction = resource => {
 
   // build action
   const action = {
-    [methodName]: payload => {
+    [methodName]: (payload) => {
       // prepare data
       const defaults = omit((resource.params || {}).filter, 'deletedAt');
       const data =
@@ -913,7 +937,7 @@ const createPutHttpAction = resource => {
  * const patchUser = createPatchHttpAction(resource);
  * patchUser({ _id: ..., name: ...}).then(user => { ... }).catch(error => { ... });
  */
-const createPatchHttpAction = resource => {
+const createPatchHttpAction = (resource) => {
   // ensure resource
   const {
     shortcut: { singular },
@@ -926,7 +950,7 @@ const createPatchHttpAction = resource => {
 
   // build action
   const action = {
-    [methodName]: payload => {
+    [methodName]: (payload) => {
       // prepare data
       const defaults = omit((resource.params || {}).filter, 'deletedAt');
       const data =
@@ -960,7 +984,7 @@ const createPatchHttpAction = resource => {
  * const deleteUser = createDeleteHttpAction(resource);
  * deleteUser('5c176624').then(user => { ... }).catch(error => { ... });
  */
-const createDeleteHttpAction = resource => {
+const createDeleteHttpAction = (resource) => {
   // ensure resource
   const {
     shortcut: { singular },
@@ -973,7 +997,7 @@ const createDeleteHttpAction = resource => {
 
   // build action
   const action = {
-    [methodName]: id => {
+    [methodName]: (id) => {
       // derive endpoint
       let endpoint = `/${toLower(plural)}/${id}`;
       if (!isEmpty(bucket)) {
@@ -1002,7 +1026,7 @@ const createDeleteHttpAction = resource => {
  * const { deleteUser } = createHttpActionsFor('user');
  * deleteUser('5c176624').then(user => { ... }).catch(error => { ... });
  */
-const createHttpActionsFor = resource => {
+const createHttpActionsFor = (resource) => {
   // compose resource http actions
   const getSchema = createGetSchemaHttpAction(resource);
   const getExportUrl = createExportUrlHttpAction(resource);
@@ -1083,6 +1107,33 @@ const WELL_KNOWN = [
   'predefine',
   'question',
   'questionnaire',
+];
+
+/**
+ * @constant
+ * @name WELL_KNOWN_REPORTS
+ * @description set of well known api endpoints for reports. they must be
+ *  one-to-one to naked api endpoints exposed by the server and they must
+ * presented in camel-case.
+ * @type {String[]}
+ * @since 0.13.0
+ * @version 0.1.0
+ * @static
+ * @public
+ */
+const WELL_KNOWN_REPORTS = [
+  'overview',
+  'indicator',
+  'risk',
+  'action',
+  'need',
+  'effect',
+  'resource',
+  'party',
+  'alert',
+  'event',
+  'dispatch',
+  'case',
 ];
 
 // default request params
@@ -1265,8 +1316,8 @@ const SHORTCUTS = mergeObjects(
 /**
  * @constant
  * @name RESOURCES
- * @description set of applicable api endpoints including both well-kown and
- * shortcuts. they must presented in camelcase and wellknown key should point
+ * @description set of applicable api endpoints including both well-known and
+ * shortcuts. they must presented in camel-case and wellknown key should point
  * back to {@link WELL_KNOWN}.
  * @type {Object}
  * @since 0.7.0
@@ -1277,7 +1328,7 @@ const SHORTCUTS = mergeObjects(
 const RESOURCES = mergeObjects(SHORTCUTS);
 
 // build wellknown resources
-forEach([...WELL_KNOWN], wellknown => {
+forEach([...WELL_KNOWN], (wellknown) => {
   const name = clone(wellknown);
   const shortcut = clone(wellknown);
   const params = mergeObjects(DEFAULT_PARAMS);
@@ -1296,11 +1347,11 @@ forEach([...WELL_KNOWN], wellknown => {
  */
 const httpActions = {
   getSchemas: () =>
-    get('/schemas').then(response => {
+    get('/schemas').then((response) => {
       const schemas = { ...response };
       // expose shortcuts schema
       if (schemas) {
-        forEach(SHORTCUTS, shortcut => {
+        forEach(SHORTCUTS, (shortcut) => {
           const key = upperFirst(shortcut.shortcut);
           const wellknown = upperFirst(shortcut.wellknown);
           schemas[key] = schemas[wellknown];
@@ -1311,9 +1362,15 @@ const httpActions = {
 };
 
 // build resource http actions
-forEach(RESOURCES, resource => {
+forEach(RESOURCES, (resource) => {
   const resourceHttpActions = createHttpActionsFor(resource);
   merge(httpActions, resourceHttpActions);
+});
+
+// build report http Get Actions
+forEach(WELL_KNOWN_REPORTS, (report) => {
+  const reportHttpAction = createGetHttpActionForReport(report);
+  merge(httpActions, reportHttpAction);
 });
 
 export {
@@ -1324,9 +1381,11 @@ export {
   RESOURCES,
   SHORTCUTS,
   WELL_KNOWN,
+  WELL_KNOWN_REPORTS,
   all,
   createDeleteHttpAction,
   createExportUrlHttpAction,
+  createGetHttpActionForReport,
   createGetListHttpAction,
   createGetSchemaHttpAction,
   createGetSingleHttpAction,
@@ -1349,7 +1408,7 @@ export {
   post,
   prepareParams,
   put,
-  signin,
-  signout,
+  signIn,
+  signOut,
   spread,
 };
