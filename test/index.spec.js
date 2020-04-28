@@ -5,11 +5,12 @@ import {
   DEFAULT_PAGINATION,
   DEFAULT_SORT,
   WELL_KNOWN,
+  WELL_KNOWN_REPORTS,
   RESOURCES,
   SHORTCUTS,
 } from '../src/index';
 
-describe('emis api client', () => {
+describe('ewea api client', () => {
   it('should expose default api endpoint filter options', () => {
     expect(DEFAULT_FILTER).to.exist;
     expect(DEFAULT_FILTER).to.be.an('object');
@@ -46,10 +47,29 @@ describe('emis api client', () => {
     ]);
   });
 
+  it('should expose names of well known reports api endpoints', () => {
+    expect(WELL_KNOWN_REPORTS).to.exist;
+    expect(WELL_KNOWN_REPORTS).to.be.an('array');
+    expect(WELL_KNOWN_REPORTS).to.be.eql([
+      'overview',
+      'indicator',
+      'risk',
+      'action',
+      'need',
+      'effect',
+      'resource',
+      'party',
+      'alert',
+      'event',
+      'dispatch',
+      'case',
+    ]);
+  });
+
   it('should expose wellknown resource builder options', () => {
     expect(RESOURCES).to.exist;
     expect(RESOURCES).to.be.an('object');
-    forEach(WELL_KNOWN, wellknown => {
+    forEach(WELL_KNOWN, (wellknown) => {
       expect(RESOURCES).to.have.property(wellknown);
     });
   });
@@ -58,7 +78,7 @@ describe('emis api client', () => {
     expect(SHORTCUTS).to.exist;
     expect(SHORTCUTS).to.be.an('object');
     expect(keys(SHORTCUTS)).to.contain('focalPerson', 'agency');
-    forEach(keys(SHORTCUTS), shortcut => {
+    forEach(keys(SHORTCUTS), (shortcut) => {
       expect(RESOURCES).to.have.property(shortcut);
     });
   });
