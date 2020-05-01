@@ -1,6 +1,6 @@
 # ewea-api-client
 
-[![Build Status](https://travis-ci.org/CodeTanzania/ewea-api-client.svg?branch=develop)](https://travis-ci.org/CodeTanzania/ewea-api-client)
+[![Build Status](https://travis-ci.com/CodeTanzania/ewea-api-client.svg?branch=develop)](https://travis-ci.org/CodeTanzania/ewea-api-client)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![Renovate enabled](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com/)
 
@@ -70,16 +70,16 @@ For filtering or searching data from the API you need to pass param object into 
 
 ```js
 getAlerts({ limit: 5 })
-  .then(results => {})
-  .catch(error => {});
+  .then((results) => {})
+  .catch((error) => {});
 ```
 
 - Search using a keyword
 
 ```js
 getAlerts({ q: 'Warning' })
-  .then(results => {})
-  .catch(error => {});
+  .then((results) => {})
+  .catch((error) => {});
 ```
 
 - Filtering using properties
@@ -88,7 +88,7 @@ i.e Filtering plans which have incident type with `ObjectID` and are in specifie
 
 ```js
 getAlerts({ filter: { incidentType: ObjectID, boundary: { $in: [] } } })
-  .then(results => {
+  .then((results) => {
     // continue here
   })
   .catch(() => {
