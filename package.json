@@ -1,6 +1,6 @@
 {
   "name": "@codetanzania/ewea-api-client",
-  "version": "0.14.0",
+  "version": "0.14.1",
   "description": "http client for EWEA API.",
   "main": "lib/index.js",
   "module": "es/index.js",
