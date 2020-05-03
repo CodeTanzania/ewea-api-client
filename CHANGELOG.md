@@ -1,3 +1,17 @@
+#### 0.14.0 (2020-05-03)
+
+##### New Features
+
+- **dispatch:** add endpoint for vehicle dispatch ([8324b213](https://github.com/CodeTanzania/ewea-api-client/commit/8324b2132013028095704dd2bb5e776f750d2be0))
+
+##### Bug Fixes
+
+- **deps:**
+  - update dependency @lykmapipo/env to >=0.17.4 ([7921a57c](https://github.com/CodeTanzania/ewea-api-client/commit/7921a57c76aeb793d654c2beebac5985dea18f64))
+  - update dependency @lykmapipo/common to >=0.33.1 ([3c84636b](https://github.com/CodeTanzania/ewea-api-client/commit/3c84636bd6737e7950411ae0ddc6b0d1169ab310))
+  - update dependency moment to >=2.25.1 ([d557a828](https://github.com/CodeTanzania/ewea-api-client/commit/d557a8280c88985851a14205a9281dbd6240ff0f))
+  - update dependency moment to >=2.25.0 ([018025ba](https://github.com/CodeTanzania/ewea-api-client/commit/018025ba8068fe086cb76400a45285907cf6b25f))
+
 #### 0.13.0 (2020-04-28)
 
 ##### Documentation Changes

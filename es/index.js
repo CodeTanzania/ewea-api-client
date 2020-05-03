@@ -1283,6 +1283,12 @@ const PREDEFINE_SHORTCUTS = {
     bucket: 'partygroups',
     params: mergeObjects(DEFAULT_PARAMS),
   },
+  partyOwnership: {
+    shortcut: 'partyOwnership',
+    wellknown: 'predefine',
+    bucket: 'partyownerships',
+    params: mergeObjects(DEFAULT_PARAMS),
+  },
   partyRole: {
     shortcut: 'partyRole',
     wellknown: 'predefine',
@@ -1293,6 +1299,30 @@ const PREDEFINE_SHORTCUTS = {
     shortcut: 'unit',
     wellknown: 'predefine',
     bucket: 'units',
+    params: mergeObjects(DEFAULT_PARAMS),
+  },
+  vehicle: {
+    shortcut: 'vehicle',
+    wellknown: 'predefine',
+    bucket: 'vehicles',
+    params: mergeObjects(DEFAULT_PARAMS),
+  },
+  vehicleModel: {
+    shortcut: 'vehicleModel',
+    wellknown: 'predefine',
+    bucket: 'vehiclemodels',
+    params: mergeObjects(DEFAULT_PARAMS),
+  },
+  vehicleMake: {
+    shortcut: 'vehicleMake',
+    wellknown: 'predefine',
+    bucket: 'vehiclemakes',
+    params: mergeObjects(DEFAULT_PARAMS),
+  },
+  vehicleType: {
+    shortcut: 'vehicleType',
+    wellknown: 'predefine',
+    bucket: 'vehicletypes',
     params: mergeObjects(DEFAULT_PARAMS),
   },
 };
