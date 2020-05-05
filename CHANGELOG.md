@@ -1,3 +1,9 @@
+#### 0.16.0 (2020-05-05)
+
+##### New Features
+
+- **dispatch:** add more endpoints for vehicle dispatch ([2e0e6d2f](https://github.com/CodeTanzania/ewea-api-client/commit/2e0e6d2f1809a1eadb5fd1a41c86d63fb1bf36f3))
+
 #### 0.15.0 (2020-05-05)
 
 ##### New Features
