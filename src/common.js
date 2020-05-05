@@ -54,6 +54,7 @@ export const WELL_KNOWN = [
   'assessment',
   'campaign',
   'changelog',
+  'dispatch',
   'event',
   'indicator',
   'message',

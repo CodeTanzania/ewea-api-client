@@ -36,6 +36,7 @@ describe('ewea api client', () => {
       'assessment',
       'campaign',
       'changelog',
+      'dispatch',
       'event',
       'indicator',
       'message',
