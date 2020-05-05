@@ -274,6 +274,12 @@ const PREDEFINE_SHORTCUTS = {
     bucket: 'vehiclemakes',
     params: mergeObjects(DEFAULT_PARAMS),
   },
+  vehicleStatus: {
+    shortcut: 'vehicleStatus',
+    wellknown: 'predefine',
+    bucket: 'vehiclestatuses',
+    params: mergeObjects(DEFAULT_PARAMS),
+  },
   vehicleType: {
     shortcut: 'vehicleType',
     wellknown: 'predefine',
