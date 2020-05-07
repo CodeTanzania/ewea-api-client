@@ -1,3 +1,9 @@
+#### 0.17.0 (2020-05-07)
+
+##### New Features
+
+- **predefines:** add party genders shortcut ([693c6306](https://github.com/CodeTanzania/ewea-api-client/commit/693c630672ae7772526226803b26e8457ccc8af0))
+
 #### 0.16.0 (2020-05-05)
 
 ##### New Features
