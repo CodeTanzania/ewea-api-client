@@ -1278,6 +1278,12 @@ const PREDEFINE_SHORTCUTS = {
     bucket: 'notificationtemplates',
     params: mergeObjects(DEFAULT_PARAMS),
   },
+  partyGender: {
+    shortcut: 'partyGender',
+    wellknown: 'predefine',
+    bucket: 'partygenders',
+    params: mergeObjects(DEFAULT_PARAMS),
+  },
   partyGroup: {
     shortcut: 'partyGroup',
     wellknown: 'predefine',
