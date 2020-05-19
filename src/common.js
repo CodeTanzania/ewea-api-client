@@ -1,5 +1,6 @@
 import { clone, forEach, merge, upperFirst } from 'lodash';
 import { mergeObjects } from '@lykmapipo/common';
+
 import {
   get,
   createHttpActionsFor,
@@ -255,6 +256,12 @@ const PREDEFINE_SHORTCUTS = {
     shortcut: 'partyRole',
     wellknown: 'predefine',
     bucket: 'partyroles',
+    params: mergeObjects(DEFAULT_PARAMS),
+  },
+  priorities: {
+    shortcut: 'priority',
+    wellknown: 'predefine',
+    bucket: 'priorities',
     params: mergeObjects(DEFAULT_PARAMS),
   },
   unit: {
