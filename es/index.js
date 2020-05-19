@@ -1302,6 +1302,12 @@ const PREDEFINE_SHORTCUTS = {
     bucket: 'partyroles',
     params: mergeObjects(DEFAULT_PARAMS),
   },
+  priorities: {
+    shortcut: 'priority',
+    wellknown: 'predefine',
+    bucket: 'priorities',
+    params: mergeObjects(DEFAULT_PARAMS),
+  },
   unit: {
     shortcut: 'unit',
     wellknown: 'predefine',
