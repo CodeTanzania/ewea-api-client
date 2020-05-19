@@ -1,3 +1,22 @@
+#### 0.18.0 (2020-05-19)
+
+##### New Features
+
+- **predefines:** add priority resources ([9e6d44ec](https://github.com/CodeTanzania/ewea-api-client/commit/9e6d44ecb630e83830553161bca512d6b9c701b6))
+
+##### Bug Fixes
+
+- **deps:**
+  - update dependency @lykmapipo/common to >=0.34.1 ([4386b01c](https://github.com/CodeTanzania/ewea-api-client/commit/4386b01c731e3a2d4c58c7502f74bb1c2a95ce45))
+  - update dependency @lykmapipo/env to >=0.17.6 ([fc508937](https://github.com/CodeTanzania/ewea-api-client/commit/fc508937a95eb71036cc124fab54b84b7cb5aa90))
+  - update dependency @lykmapipo/common to >=0.33.3 ([49a61d39](https://github.com/CodeTanzania/ewea-api-client/commit/49a61d39e7067ef6aa2129cb737f370eb45dd98e))
+  - update dependency @lykmapipo/env to >=0.17.5 ([59b8fde7](https://github.com/CodeTanzania/ewea-api-client/commit/59b8fde774b6853e70e2dab5d5e13a6d71e61177))
+  - update dependency @lykmapipo/common to >=0.33.2 ([be58d43a](https://github.com/CodeTanzania/ewea-api-client/commit/be58d43a0a2c4d2c130f0b3420443646e73cdd3e))
+
+##### Other Changes
+
+- CodeTanzania/ewea-api-client into develop ([d2c22812](https://github.com/CodeTanzania/ewea-api-client/commit/d2c22812533954608f030f3a7ef5858dae1388f3))
+
 #### 0.17.0 (2020-05-07)
 
 ##### New Features
