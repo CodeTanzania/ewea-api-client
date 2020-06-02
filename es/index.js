@@ -1108,6 +1108,7 @@ const WELL_KNOWN = [
   'predefine',
   'question',
   'questionnaire',
+  'case',
 ];
 
 /**
@@ -1282,6 +1283,12 @@ const PREDEFINE_SHORTCUTS = {
     shortcut: 'partyGender',
     wellknown: 'predefine',
     bucket: 'partygenders',
+    params: mergeObjects(DEFAULT_PARAMS),
+  },
+  partyOccupation: {
+    shortcut: 'partyOccupation',
+    wellknown: 'predefine',
+    bucket: 'partyoccupations',
     params: mergeObjects(DEFAULT_PARAMS),
   },
   partyGroup: {

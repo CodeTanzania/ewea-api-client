@@ -45,6 +45,7 @@ describe('ewea api client', () => {
       'predefine',
       'question',
       'questionnaire',
+      'case',
     ]);
   });
 
