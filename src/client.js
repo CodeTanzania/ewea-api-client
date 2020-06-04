@@ -1,11 +1,3 @@
-import moment from 'moment';
-import axios from 'axios';
-import FormData from 'form-data';
-import buildURL from 'axios/lib/helpers/buildURL';
-import jwtDecode from 'jwt-decode';
-import { singularize, pluralize } from 'inflection';
-import { idOf, uniq, mergeObjects, variableNameFor } from '@lykmapipo/common';
-import { getString } from '@lykmapipo/env';
 import {
   merge,
   isArray,
@@ -19,6 +11,20 @@ import {
   toLower,
   omit,
 } from 'lodash';
+import moment from 'moment';
+import axios from 'axios';
+import FormData from 'form-data';
+import buildURL from 'axios/lib/helpers/buildURL';
+import jwtDecode from 'jwt-decode';
+import { singularize, pluralize } from 'inflection';
+import {
+  idOf,
+  isBrowser,
+  uniq,
+  mergeObjects,
+  variableNameFor,
+} from '@lykmapipo/common';
+import { getString } from '@lykmapipo/env';
 
 // default http client
 let client;
@@ -27,9 +33,6 @@ let party = null; // current sign in party
 
 // client base url
 let BASE_URL;
-
-const isBrowser =
-  typeof window !== 'undefined' && typeof window.document !== 'undefined'; // eslint-disable-line
 
 /**
  * @function
