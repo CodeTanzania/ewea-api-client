@@ -20,8 +20,9 @@ import { singularize, pluralize } from 'inflection';
 import {
   idOf,
   isBrowser,
-  uniq,
+  isNode,
   mergeObjects,
+  uniq,
   variableNameFor,
 } from '@lykmapipo/common';
 
@@ -46,6 +47,10 @@ let BASE_URL;
 export const getJwtToken = () => {
   if (isEmpty(jwtToken) && isBrowser) {
     jwtToken = sessionStorage.getItem('token'); // eslint-disable-line
+  }
+
+  if (isEmpty(jwtToken) && isNode) {
+    jwtToken = getString('EWEA_API_TOKEN');
   }
 
   return jwtToken;
