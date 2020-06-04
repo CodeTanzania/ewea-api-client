@@ -1,22 +1,22 @@
-import {
-  merge,
-  isArray,
-  isPlainObject,
-  forEach,
-  first,
-  isEmpty,
-  isString,
-  max,
-  min,
-  toLower,
-  omit,
-} from 'lodash';
+import first from 'lodash/first';
+import forEach from 'lodash/forEach';
+import isArray from 'lodash/isArray';
+import isEmpty from 'lodash/isEmpty';
+import isPlainObject from 'lodash/isPlainObject';
+import isString from 'lodash/isString';
+import max from 'lodash/max';
+import merge from 'lodash/merge';
+import min from 'lodash/min';
+import omit from 'lodash/omit';
+import toLower from 'lodash/toLower';
 import moment from 'moment';
+
 import axios from 'axios';
 import FormData from 'form-data';
 import buildURL from 'axios/lib/helpers/buildURL';
 import jwtDecode from 'jwt-decode';
 import { singularize, pluralize } from 'inflection';
+
 import {
   idOf,
   isBrowser,
@@ -24,6 +24,7 @@ import {
   mergeObjects,
   variableNameFor,
 } from '@lykmapipo/common';
+
 import { getString } from '@lykmapipo/env';
 
 // default http client
@@ -394,6 +395,10 @@ export const getBaseUrl = () => BASE_URL;
  */
 export const disposeHttpClient = () => {
   client = null;
+  // TODO clear session storage
+  // TODO clear jwtToken
+  // TODO clear party
+  // TODO clear BASE_URL
   return client;
 };
 
