@@ -1,3 +1,9 @@
+#### 0.21.0 (2020-06-04)
+
+##### New Features
+
+- add party nationality ([695c745a](https://github.com/CodeTanzania/ewea-api-client/commit/695c745afb17b6fac7c8725e4adc627818dcd692))
+
 #### 0.20.0 (2020-06-04)
 
 ##### New Features
