@@ -350,6 +350,27 @@ export const prepareParams = (params) => {
 };
 
 /**
+ * @function
+ * @name getBaseUrl
+ * @description Retrieve API base url string
+ *
+ * @returns {string} Base URL
+ * @version 0.1.0
+ * @since 0.8.2
+ * @public
+ * @static
+ */
+export const getBaseUrl = (API_BASE_URL) => {
+  if (!isEmpty(BASE_URL)) {
+    return BASE_URL;
+  }
+  const EWEA_API_URL = getString('EWEA_API_URL');
+  const REACT_APP_EWEA_API_URL = getString('REACT_APP_EWEA_API_URL');
+  BASE_URL = API_BASE_URL || EWEA_API_URL || REACT_APP_EWEA_API_URL;
+  return BASE_URL;
+};
+
+/**
  * @function createHttpClient
  * @name createHttpClient
  * @description create an http client if not exists
@@ -365,28 +386,15 @@ export const prepareParams = (params) => {
  */
 export const createHttpClient = (API_BASE_URL) => {
   if (!client) {
-    const EWEA_API_URL = getString('EWEA_API_URL');
-    const REACT_APP_EWEA_API_URL = getString('REACT_APP_EWEA_API_URL');
-    BASE_URL = API_BASE_URL || EWEA_API_URL || REACT_APP_EWEA_API_URL;
-    const options = { baseURL: BASE_URL, headers: getHeaders() };
+    const options = {
+      baseURL: getBaseUrl(API_BASE_URL),
+      headers: getHeaders(),
+    };
     client = axios.create(options);
     client.id = Date.now();
   }
   return client;
 };
-
-/**
- * @function
- * @name getBaseUrl
- * @description Retrieve API base url string
- *
- * @returns {string} Base URL
- * @version 0.1.0
- * @since 0.8.2
- * @public
- * @static
- */
-export const getBaseUrl = () => BASE_URL;
 
 /**
  * @function disposeHttpClient
@@ -399,11 +407,17 @@ export const getBaseUrl = () => BASE_URL;
  * disposeHttpClient();
  */
 export const disposeHttpClient = () => {
+  // cleanup states
   client = null;
-  // TODO clear session storage
-  // TODO clear jwtToken
-  // TODO clear party
-  // TODO clear BASE_URL
+  party = undefined;
+  jwtToken = undefined;
+  BASE_URL = undefined;
+
+  if (isBrowser) {
+    sessionStorage.clear(); // eslint-disable-line
+  }
+
+  // return client
   return client;
 };
 
@@ -709,9 +723,10 @@ export const createExportUrlHttpAction = (resource) => {
       // prepare params
       const params = prepareParams(mergeObjects(resource.params, options));
       // derive endpoint
-      let endpoint = `${BASE_URL}/${toLower(wellknown.plural)}/export`;
+      const baseUrl = getBaseUrl();
+      let endpoint = `${baseUrl}/${toLower(wellknown.plural)}/export`;
       if (!isEmpty(bucket)) {
-        endpoint = `${BASE_URL}/${toLower(wellknown.plural)}/${bucket}/export`;
+        endpoint = `${baseUrl}/${toLower(wellknown.plural)}/${bucket}/export`;
       }
       // build export url
       const url = buildURL(endpoint, params);
