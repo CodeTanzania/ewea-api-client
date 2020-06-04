@@ -1,3 +1,16 @@
+#### 0.20.0 (2020-06-04)
+
+##### New Features
+
+- **client:**
+  - use getBaseUrl helper ([cfab96c0](https://github.com/CodeTanzania/ewea-api-client/commit/cfab96c02cd9431a6d693515de9be42a147ffdca))
+  - support env api token ([ab7b7fbf](https://github.com/CodeTanzania/ewea-api-client/commit/ab7b7fbf6a4c138f021c986da83e04f2fa1e5877))
+
+##### Refactors
+
+- **deps:** use specific imports ([4175eabe](https://github.com/CodeTanzania/ewea-api-client/commit/4175eabe928afe43bc2bd161f70143d03e032251))
+- **client:** use isBrowser from utils ([98c399d5](https://github.com/CodeTanzania/ewea-api-client/commit/98c399d5fc55f9c70c3adf507f2164fbbe7a25d6))
+
 #### 0.19.0 (2020-06-02)
 
 ##### Documentation Changes
