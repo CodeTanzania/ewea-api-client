@@ -1316,6 +1316,12 @@ const PREDEFINE_SHORTCUTS = {
     bucket: 'partyoccupations',
     params: mergeObjects(DEFAULT_PARAMS),
   },
+  partyNationality: {
+    shortcut: 'partyNationality',
+    wellknown: 'predefine',
+    bucket: 'partynationalities',
+    params: mergeObjects(DEFAULT_PARAMS),
+  },
   partyGroup: {
     shortcut: 'partyGroup',
     wellknown: 'predefine',
