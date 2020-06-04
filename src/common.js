@@ -1,4 +1,8 @@
-import { clone, forEach, merge, upperFirst } from 'lodash';
+import clone from 'lodash/clone';
+import forEach from 'lodash/forEach';
+import merge from 'lodash/merge';
+import upperFirst from 'lodash/upperFirst';
+
 import { mergeObjects } from '@lykmapipo/common';
 
 import {

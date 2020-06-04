@@ -1,26 +1,31 @@
+import first from 'lodash/first';
+import forEach from 'lodash/forEach';
+import isArray from 'lodash/isArray';
+import isEmpty from 'lodash/isEmpty';
+import isPlainObject from 'lodash/isPlainObject';
+import isString from 'lodash/isString';
+import max from 'lodash/max';
+import merge from 'lodash/merge';
+import min from 'lodash/min';
+import omit from 'lodash/omit';
+import toLower from 'lodash/toLower';
 import moment from 'moment';
 import axios from 'axios';
 import FormData from 'form-data';
 import buildURL from 'axios/lib/helpers/buildURL';
 import jwtDecode from 'jwt-decode';
 import { singularize, pluralize } from 'inflection';
-import { mergeObjects, variableNameFor, idOf, uniq } from '@lykmapipo/common';
-import { getString } from '@lykmapipo/env';
 import {
-  isEmpty,
-  forEach,
-  merge,
-  isString,
-  isArray,
-  isPlainObject,
-  toLower,
-  omit,
-  first,
-  min,
-  max,
-  clone,
-  upperFirst,
-} from 'lodash';
+  isBrowser,
+  isNode,
+  mergeObjects,
+  variableNameFor,
+  idOf,
+  uniq,
+} from '@lykmapipo/common';
+import { getString } from '@lykmapipo/env';
+import clone from 'lodash/clone';
+import upperFirst from 'lodash/upperFirst';
 
 // default http client
 let client;
@@ -29,9 +34,6 @@ let party = null; // current sign in party
 
 // client base url
 let BASE_URL;
-
-const isBrowser =
-  typeof window !== 'undefined' && typeof window.document !== 'undefined'; // eslint-disable-line
 
 /**
  * @function
@@ -44,6 +46,10 @@ const isBrowser =
 const getJwtToken = () => {
   if (isEmpty(jwtToken) && isBrowser) {
     jwtToken = sessionStorage.getItem('token'); // eslint-disable-line
+  }
+
+  if (isEmpty(jwtToken) && isNode) {
+    jwtToken = getString('EWEA_API_TOKEN');
   }
 
   return jwtToken;
@@ -343,6 +349,27 @@ const prepareParams = (params) => {
 };
 
 /**
+ * @function
+ * @name getBaseUrl
+ * @description Retrieve API base url string
+ *
+ * @returns {string} Base URL
+ * @version 0.1.0
+ * @since 0.8.2
+ * @public
+ * @static
+ */
+const getBaseUrl = (API_BASE_URL) => {
+  if (!isEmpty(BASE_URL)) {
+    return BASE_URL;
+  }
+  const EWEA_API_URL = getString('EWEA_API_URL');
+  const REACT_APP_EWEA_API_URL = getString('REACT_APP_EWEA_API_URL');
+  BASE_URL = API_BASE_URL || EWEA_API_URL || REACT_APP_EWEA_API_URL;
+  return BASE_URL;
+};
+
+/**
  * @function createHttpClient
  * @name createHttpClient
  * @description create an http client if not exists
@@ -358,28 +385,15 @@ const prepareParams = (params) => {
  */
 const createHttpClient = (API_BASE_URL) => {
   if (!client) {
-    const EWEA_API_URL = getString('EWEA_API_URL');
-    const REACT_APP_EWEA_API_URL = getString('REACT_APP_EWEA_API_URL');
-    BASE_URL = API_BASE_URL || EWEA_API_URL || REACT_APP_EWEA_API_URL;
-    const options = { baseURL: BASE_URL, headers: getHeaders() };
+    const options = {
+      baseURL: getBaseUrl(API_BASE_URL),
+      headers: getHeaders(),
+    };
     client = axios.create(options);
     client.id = Date.now();
   }
   return client;
 };
-
-/**
- * @function
- * @name getBaseUrl
- * @description Retrieve API base url string
- *
- * @returns {string} Base URL
- * @version 0.1.0
- * @since 0.8.2
- * @public
- * @static
- */
-const getBaseUrl = () => BASE_URL;
 
 /**
  * @function disposeHttpClient
@@ -392,7 +406,17 @@ const getBaseUrl = () => BASE_URL;
  * disposeHttpClient();
  */
 const disposeHttpClient = () => {
+  // cleanup states
   client = null;
+  party = undefined;
+  jwtToken = undefined;
+  BASE_URL = undefined;
+
+  if (isBrowser) {
+    sessionStorage.clear(); // eslint-disable-line
+  }
+
+  // return client
   return client;
 };
 
@@ -698,9 +722,10 @@ const createExportUrlHttpAction = (resource) => {
       // prepare params
       const params = prepareParams(mergeObjects(resource.params, options));
       // derive endpoint
-      let endpoint = `${BASE_URL}/${toLower(wellknown.plural)}/export`;
+      const baseUrl = getBaseUrl();
+      let endpoint = `${baseUrl}/${toLower(wellknown.plural)}/export`;
       if (!isEmpty(bucket)) {
-        endpoint = `${BASE_URL}/${toLower(wellknown.plural)}/${bucket}/export`;
+        endpoint = `${baseUrl}/${toLower(wellknown.plural)}/${bucket}/export`;
       }
       // build export url
       const url = buildURL(endpoint, params);

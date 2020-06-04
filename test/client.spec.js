@@ -25,6 +25,8 @@ import {
   createHttpActionsFor,
   httpActions,
   createGetHttpActionForReport,
+  getJwtToken,
+  getHeaders,
 } from '../src/index';
 
 const {
@@ -61,6 +63,7 @@ const {
 describe('http client', () => {
   beforeEach(() => {
     delete process.env.EWEA_API_URL;
+    delete process.env.EWEA_API_TOKEN;
     delete process.env.REACT_APP_EWEA_API_URL;
     nock.cleanAll();
     disposeHttpClient();
@@ -786,8 +789,25 @@ describe('http client', () => {
       });
   });
 
+  it('should get jwt token from `env.EWEA_API_TOKEN`', () => {
+    process.env.EWEA_API_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9';
+    const jwtToken = getJwtToken();
+    expect(jwtToken).to.exist;
+    expect(jwtToken).to.be.equal(process.env.EWEA_API_TOKEN);
+  });
+
+  it('should ensure authorization header from `env.EWEA_API_TOKEN`', () => {
+    process.env.EWEA_API_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9';
+    const headers = getHeaders();
+    expect(headers).to.exist;
+    expect(headers.Authorization).to.be.equal(
+      'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9'
+    );
+  });
+
   after(() => {
     delete process.env.EWEA_API_URL;
+    delete process.env.EWEA_API_TOKEN;
     delete process.env.REACT_APP_EWEA_API_URL;
     nock.cleanAll();
     disposeHttpClient();
