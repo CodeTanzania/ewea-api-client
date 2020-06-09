@@ -1,3 +1,19 @@
+#### 0.22.0 (2020-06-09)
+
+##### New Features
+
+- add case stage & severity ([42b798bb](https://github.com/CodeTanzania/ewea-api-client/commit/42b798bb7b7390bd87071d947e155154c848f8dd))
+
+##### Bug Fixes
+
+- **deps:**
+  - update dependency @lykmapipo/env to >=0.17.8 ([ff88817a](https://github.com/CodeTanzania/ewea-api-client/commit/ff88817a651fece409d15a84beecb902be0256c0))
+  - update dependency @lykmapipo/common to >=0.34.3 ([ffd7a82f](https://github.com/CodeTanzania/ewea-api-client/commit/ffd7a82f8dcd61143e89d9c4089390112578b7e2))
+
+##### Other Changes
+
+- //github.com/CodeTanzania/ewea-api-client into develop ([7dfce90d](https://github.com/CodeTanzania/ewea-api-client/commit/7dfce90d5837aebd339509167015d4b1fd4d03d9))
+
 #### 0.21.0 (2020-06-04)
 
 ##### New Features
