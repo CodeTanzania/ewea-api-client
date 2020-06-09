@@ -1382,6 +1382,18 @@ const PREDEFINE_SHORTCUTS = {
     bucket: 'vehicletypes',
     params: mergeObjects(DEFAULT_PARAMS),
   },
+  caseSeverity: {
+    shortcut: 'caseSeverity',
+    wellknown: 'predefine',
+    bucket: 'caseseverities',
+    params: mergeObjects(DEFAULT_PARAMS),
+  },
+  caseStage: {
+    shortcut: 'caseStage',
+    wellknown: 'predefine',
+    bucket: 'casestages',
+    params: mergeObjects(DEFAULT_PARAMS),
+  },
 };
 
 /**
