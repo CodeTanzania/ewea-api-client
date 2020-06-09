@@ -1,6 +1,6 @@
 {
   "name": "@codetanzania/ewea-api-client",
-  "version": "0.21.0",
+  "version": "0.22.0",
   "description": "http client for EWEA API.",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -50,10 +50,10 @@
     "chai": "^4.2.0",
     "commitizen": "^4.1.2",
     "cz-conventional-changelog": "^3.2.0",
-    "eslint": "^7.1.0",
+    "eslint": "^7.2.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-import": "^2.21.1",
     "eslint-plugin-mocha": "^7.0.1",
     "eslint-plugin-prettier": "^3.1.3",
     "generate-changelog": "^1.8.0",
@@ -63,11 +63,11 @@
     "nock": "^12.0.3",
     "prettier": "^2.0.5",
     "rimraf": "^3.0.2",
-    "rollup": "^2.13.1"
+    "rollup": "^2.15.0"
   },
   "dependencies": {
-    "@lykmapipo/common": ">=0.34.2",
-    "@lykmapipo/env": ">=0.17.7",
+    "@lykmapipo/common": ">=0.34.3",
+    "@lykmapipo/env": ">=0.17.8",
     "axios": ">=0.19.2",
     "form-data": ">=3.0.0",
     "inflection": ">=1.12.0",
