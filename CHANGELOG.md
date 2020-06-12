@@ -1,3 +1,13 @@
+#### 0.23.0 (2020-06-12)
+
+##### Bug Fixes
+
+- **client:** remove empty filters ([dd170f20](https://github.com/CodeTanzania/ewea-api-client/commit/dd170f20687263edeb4f36354dcc6a434cc73e05))
+
+##### Other Changes
+
+- //github.com/CodeTanzania/ewea-api-client into develop ([aa559f79](https://github.com/CodeTanzania/ewea-api-client/commit/aa559f79437ceba8fa7c73fa204303de57823d6c))
+
 #### 0.22.0 (2020-06-09)
 
 ##### New Features
