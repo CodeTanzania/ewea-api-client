@@ -1,5 +1,5 @@
 import first from 'lodash/first';
-import forEach from 'lodash/forEach';
+import mapValues from 'lodash/mapValues';
 import isArray from 'lodash/isArray';
 import isEmpty from 'lodash/isEmpty';
 import isPlainObject from 'lodash/isPlainObject';
@@ -326,31 +326,32 @@ export const prepareParams = (params) => {
   // clone params
   const options = mergeObjects(defaults, params);
 
-  // transform filters
-  if (options.filter) {
-    const transformFilter = (val, key) => {
-      // clear empty object and array filters
-      if ((isArray(val) || isPlainObject(val)) && isEmpty(val)) {
-        options.filter[key] = undefined;
-      }
-      // array
-      if (isArray(val)) {
-        options.filter[key] = mapIn(...val);
-      }
-      // date between
-      if (isPlainObject(val) && (val.from || val.to)) {
-        options.filter[key] = mapBetween(val);
-      }
-      // range between
-      if (isPlainObject(val) && (val.min || val.max)) {
-        options.filter[key] = mapRange(val);
-      }
-    };
-
-    // update filters
-    forEach(options.filter, transformFilter);
-    options.filter = mergeObjects(options.filter);
-  }
+  // transform & update filters
+  const filters = mergeObjects(options.filter);
+  options.filter = mapValues(filters, (val) => {
+    // clear empty array
+    if (isArray(val) && isEmpty(val)) {
+      return undefined;
+    }
+    // clear empty object
+    if (isPlainObject(val) && isEmpty(mergeObjects(val))) {
+      return undefined;
+    }
+    // array
+    if (isArray(val)) {
+      return mapIn(...val);
+    }
+    // date between
+    if (isPlainObject(val) && (val.from || val.to)) {
+      return mapBetween(val);
+    }
+    // range between
+    if (isPlainObject(val) && (val.min || val.max)) {
+      return mapRange(val);
+    }
+    // always return
+    return val;
+  });
 
   // clean and return params
   const cleanParams = mergeObjects(options);

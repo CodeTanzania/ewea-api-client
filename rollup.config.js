@@ -26,6 +26,7 @@ export default [
       'lodash/min',
       'lodash/omit',
       'lodash/toLower',
+      'lodash/mapValues',
     ],
     output: [
       {
