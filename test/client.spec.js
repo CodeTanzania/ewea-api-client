@@ -69,6 +69,17 @@ describe('http client', () => {
     disposeHttpClient();
   });
 
+  it('should prepare any params', () => {
+    const filter = { name: 'joe', age: 14 };
+    const params = prepareParams({ filter });
+    expect(params).to.exist;
+    expect(params.filter).to.exist;
+    expect(params.filter.name).to.exist;
+    expect(params.filter.age).to.exist;
+    expect(params.filter.name).to.be.equal('joe');
+    expect(params.filter.age).to.be.equal(14);
+  });
+
   it('should prepare list array params', () => {
     const filter = { name: ['joe', 'doe'] };
     const params = prepareParams({ filter });
@@ -79,12 +90,24 @@ describe('http client', () => {
   });
 
   it('should prepare single item array params', () => {
-    const filter = { name: ['joe'] };
-    const params = prepareParams({ filter });
+    let filter = { name: ['joe'] };
+    let params = prepareParams({ filter });
     expect(params).to.exist;
     expect(params.filter).to.exist;
     expect(params.filter.name).to.exist;
     expect(params.filter.name).to.be.equal('joe');
+
+    filter = { name: [null] };
+    params = prepareParams({ filter });
+    expect(params).to.exist;
+    expect(params.filter).to.exist;
+    expect(params.filter.name).to.not.exist;
+
+    filter = { name: [''] };
+    params = prepareParams({ filter });
+    expect(params).to.exist;
+    expect(params.filter).to.exist;
+    expect(params.filter.name).to.not.exist;
   });
 
   it('should prepare number range params', () => {
@@ -109,6 +132,11 @@ describe('http client', () => {
     expect(params.filter.age).to.be.eql({ $lte: 4 });
 
     filter = { age: {} };
+    params = prepareParams({ filter });
+    expect(params.filter).to.exist;
+    expect(params.filter.age).to.not.exist;
+
+    filter = { age: { min: undefined, max: undefined } };
     params = prepareParams({ filter });
     expect(params.filter).to.exist;
     expect(params.filter.age).to.not.exist;
@@ -141,6 +169,11 @@ describe('http client', () => {
     params = prepareParams({ filter });
     expect(params.filter).to.exist;
     expect(params.filter.createdAt).to.be.eql({ $lte: expected.$lte });
+
+    filter = { createdAt: { from: undefined, to: undefined } };
+    params = prepareParams({ filter });
+    expect(params.filter).to.exist;
+    expect(params.filter.createdAt).to.not.exist;
   });
 
   it('should normalize resource', () => {
