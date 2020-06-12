@@ -322,12 +322,17 @@ export const getHeaders = () => {
 export const prepareParams = (params) => {
   // default params
   const defaults = { sort: { updatedAt: -1 } };
+
   // clone params
   const options = mergeObjects(defaults, params);
 
   // transform filters
   if (options.filter) {
     const transformFilter = (val, key) => {
+      // clear empty object and array filters
+      if ((isArray(val) || isPlainObject(val)) && isEmpty(val)) {
+        options.filter[key] = undefined;
+      }
       // array
       if (isArray(val)) {
         options.filter[key] = mapIn(...val);
@@ -342,11 +347,14 @@ export const prepareParams = (params) => {
       }
     };
 
+    // update filters
     forEach(options.filter, transformFilter);
+    options.filter = mergeObjects(options.filter);
   }
 
-  // return params
-  return options;
+  // clean and return params
+  const cleanParams = mergeObjects(options);
+  return cleanParams;
 };
 
 /**

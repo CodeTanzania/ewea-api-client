@@ -107,6 +107,11 @@ describe('http client', () => {
     params = prepareParams({ filter });
     expect(params.filter).to.exist;
     expect(params.filter.age).to.be.eql({ $lte: 4 });
+
+    filter = { age: {} };
+    params = prepareParams({ filter });
+    expect(params.filter).to.exist;
+    expect(params.filter.age).to.not.exist;
   });
 
   it('should prepare date between params', () => {
