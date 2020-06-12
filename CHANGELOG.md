@@ -1,3 +1,9 @@
+#### 0.24.0 (2020-06-12)
+
+##### Refactors
+
+- **client:** clean deep nested params ([d3131ced](https://github.com/CodeTanzania/ewea-api-client/commit/d3131ced47b59b5ed81beb025eb1fa7e6b2e0566))
+
 #### 0.23.0 (2020-06-12)
 
 ##### Bug Fixes
