@@ -67,7 +67,7 @@
   },
   "dependencies": {
     "@lykmapipo/common": ">=0.37.3",
-    "@lykmapipo/env": ">=0.17.12",
+    "@lykmapipo/env": ">=0.17.13",
     "axios": ">=0.19.2",
     "form-data": ">=3.0.0",
     "inflection": ">=1.12.0",
