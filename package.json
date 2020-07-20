@@ -66,7 +66,7 @@
     "rollup": "^2.22.1"
   },
   "dependencies": {
-    "@lykmapipo/common": ">=0.37.3",
+    "@lykmapipo/common": ">=0.37.4",
     "@lykmapipo/env": ">=0.17.13",
     "axios": ">=0.19.2",
     "form-data": ">=3.0.0",
