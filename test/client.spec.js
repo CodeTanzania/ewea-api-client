@@ -133,8 +133,7 @@ describe('http client', () => {
 
     filter = { age: {} };
     params = prepareParams({ filter });
-    expect(params.filter).to.exist;
-    expect(params.filter.age).to.not.exist;
+    expect(params.filter).to.not.exist;
 
     filter = { age: { min: undefined, max: undefined } };
     params = prepareParams({ filter });
