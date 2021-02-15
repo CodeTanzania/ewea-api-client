@@ -69,7 +69,7 @@
     "@lykmapipo/common": ">=0.42.9",
     "@lykmapipo/env": ">=0.17.29",
     "axios": ">=0.21.0",
-    "form-data": ">=3.0.0",
+    "form-data": ">=3.0.1",
     "inflection": ">=1.12.0",
     "jwt-decode": ">=3.1.2",
     "lodash": ">=4.17.20",
