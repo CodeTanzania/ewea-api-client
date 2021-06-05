@@ -168,9 +168,8 @@ const mapResponseToData = (response) => response.data;
  * @version 0.1.0
  * @private
  */
-const wrapRequest = (request) => {
-  return request.then(mapResponseToData).catch(mapResponseToError);
-};
+const wrapRequest = (request) =>
+  request.then(mapResponseToData).catch(mapResponseToError);
 
 /**
  * @function mapIn
